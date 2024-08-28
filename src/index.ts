@@ -2,6 +2,7 @@ import type { App } from "vue";
 import * as components from "./components";
 
 /** PrimeVue Config. */
+import { usePrimeVue } from "primevue/config";
 import PrimeVue from "primevue/config";
 import Tooltip from "primevue/tooltip";
 import ptBrLocale from "./theme/locale";
@@ -18,9 +19,19 @@ function install(app: App) {
     },
   });
 
+  app.mixin({
+    created() {
+      const primevue = usePrimeVue();
+      primevue.config.pt = Was;
+    },
+  });
+
   for (const key in components) {
     // @ts-ignore
     app.component(key, components[key]);
+    // @ts-ignore
+    console.log({ key, comp: components[key] },)
+
   }
 }
 
@@ -28,5 +39,6 @@ import "./assets/main.css";
 
 export default { install, components };
 
-// export * from "./constants";
-// export * from "./utils";
+export * from "./components";
+export * from "./constants";
+export * from "./utils";

@@ -8,26 +8,25 @@
   "private": false,
   "type": "module",
   "files": [
-    "src",
     "dist"
   ],
   "main": "./dist/sh3-components.umd.cjs",
   "module": "./dist/sh3-components.js",
   "exports": {
     ".": {
+      "types": "./dist/types/src/index.d.ts",
       "import": "./dist/sh3-components.js",
       "require": "./dist/sh3-components.umd.cjs"
     },
     "./style.css": "./dist/style.css"
   },
-  "types": "./dist/types/index.d.ts",
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
     "test:unit": "vitest",
     "build-only": "vite build",
-    "type-check": "vue-tsc --build --force --declaration",
+    "type-check": "vue-tsc --build --force --declaration --emitDeclarationOnly",
     "lint": "eslint --fix **/*.{ts,vue} ",
     "format": "prettier --write src/",
     "clean": "find . -type f -name 'vite.config.*.timestamp-*' -ls -delete 2>/dev/null"

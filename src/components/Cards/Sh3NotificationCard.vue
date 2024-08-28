@@ -12,11 +12,13 @@
         {{ notification.label.time }} | {{ notification.label.autarchy }}
       </span>
     </div>
-    <EraCardTag :tagVariation="notification.tag" />
+    <Sh3CardTag :tagVariation="notification.tag" />
   </div>
 </template>
 
 <script setup lang="ts">
+import Sh3CardTag from "./fragments/Sh3CardTag.vue";
+
 type NotificationType = {
   text: string;
   tag: string;

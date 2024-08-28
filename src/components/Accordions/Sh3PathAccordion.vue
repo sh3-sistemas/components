@@ -6,7 +6,7 @@
         v-for="(link, i) in item.links"
         v-bind:key="i"
       >
-        <EraCardTag :tagVariation="link.tag" />
+        <Sh3CardTag :tagVariation="link.tag" />
         <div class="AccordionContentText text-sm text-mercury-900">
           {{ link.path }}
         </div>
@@ -17,6 +17,7 @@
 
 <script setup lang="ts">
 import Sh3Accordion from "./Sh3Accordion.vue";
+import Sh3CardTag from "../Cards/fragments/Sh3CardTag.vue";
 
 type AccordionItem = {
   title: string;

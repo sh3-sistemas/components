@@ -10,6 +10,7 @@
   ],
   "compilerOptions": {
     "composite": true,
+    "noEmit": false,
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
     "baseUrl": ".",
     "paths": {
@@ -17,18 +18,23 @@
         "./src/*"
       ]
     },
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
     "sourceMap": true,
     "resolveJsonModule": true,
-    "strict": true,
-    "esModuleInterop": true,
     "skipLibCheck": true,
     "experimentalDecorators": true,
     "declarationDir": "./dist/types",
     "types": [
       "vite/client"
     ],
-    "allowJs": true,
-    // Generate d.ts files
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "outDir": "dist/types",
     "declaration": true,
+    "allowJs": true,
   }
 }

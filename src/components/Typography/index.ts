@@ -1,2 +1,2 @@
-export * as Texts from "./Texts";
-export * as Titles from "./Titles";
+export * from "./Texts";
+export * from "./Titles";

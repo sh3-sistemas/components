@@ -5,7 +5,7 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
 import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js'
-import dts from 'vite-plugin-dts'
+/* import dts from 'vite-plugin-dts' */
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -17,7 +17,7 @@ export default defineConfig({
     }),
     vueDevTools(),
     cssInjectedByJsPlugin(),
-    dts({
+    /* dts({
       copyDtsFiles: true,
       tsconfigPath: './tsconfig.build.json',
       exclude: ['src/ignore'],
@@ -26,7 +26,7 @@ export default defineConfig({
       },
       entryRoot: resolve(__dirname, 'src'),
       outDir: resolve(__dirname, 'dist', 'types'),
-    })
+    }) */
   ],
   build: {
     sourcemap: true,
@@ -36,7 +36,7 @@ export default defineConfig({
       entry: resolve(__dirname, "src/index.ts"),
       name: "sh3-components",
       // the name of the output files when the build is run
-      formats: ['es'], // adding 'umd' requires globals set to every external module
+      formats: ['es', 'umd'], // adding 'umd' requires globals set to every external module
       // fileName: (format) => `sh3-components.${format}.js`,
       fileName: "sh3-components",
     },

@@ -11,10 +11,12 @@ defineOptions({
   inheritAttrs: false,
 });
 
-defineProps({
+defineProps<{ label: string }>();
+
+/* defineProps<{ label: string }>({
   label: {
     type: String,
     default: "Search",
   },
-});
+}); */
 </script>
