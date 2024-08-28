@@ -40,7 +40,9 @@
     "@iconify/vue": "^4.1.2",
     "primeicons": "^6.0.1",
     "primevue": "^3.53.0",
+    "flowbite": "^2.2.1",
     "radix-vue": "^1.9.4",
+    "vee-validate": "^4.11.6",
     "tailwind-merge": "^2.5.2",
     "vue": "^3.4.29"
   },

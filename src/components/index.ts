@@ -10,3 +10,7 @@ export * from "./Inputs";
 export * from "./Sidebares";
 export * from "./Tabs";
 export * from "./Typography";
+export * from "./Links";
+export * from "./Layouts";
+export * from "./Navigation";
+export * from "./Forms";

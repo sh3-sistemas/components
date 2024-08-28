@@ -12,6 +12,7 @@ export default {
   theme: {
     ...tailwindTheme
   },
-  // plugins: [require("flowbite/plugin")],
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  plugins: [require("flowbite/plugin")],
 }
 
