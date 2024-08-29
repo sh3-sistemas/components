@@ -4,7 +4,7 @@
     "name": "SH3 Informática",
     "email": "dev@sh3.com.br"
   },
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": false,
   "type": "module",
   "files": [
@@ -38,12 +38,12 @@
   },
   "dependencies": {
     "@iconify/vue": "^4.1.2",
+    "flowbite": "^2.2.1",
     "primeicons": "^6.0.1",
     "primevue": "^3.53.0",
-    "flowbite": "^2.2.1",
     "radix-vue": "^1.9.4",
-    "vee-validate": "^4.11.6",
     "tailwind-merge": "^2.5.2",
+    "vee-validate": "^4.11.6",
     "vue": "^3.4.29"
   },
   "devDependencies": {

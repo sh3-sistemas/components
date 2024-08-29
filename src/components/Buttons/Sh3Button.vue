@@ -1,7 +1,5 @@
 <template>
-  <div class="card flex justify-center">
-    <Button :label="label" :ptOptions="{ mergeProps: true }" v-bind="$attrs" />
-  </div>
+  <Button :label="label" :ptOptions="{ mergeProps: true }" v-bind="$attrs" />
 </template>
 
 <script lang="ts" setup>
@@ -12,11 +10,4 @@ defineOptions({
 });
 
 defineProps<{ label: string }>();
-
-/* defineProps<{ label: string }>({
-  label: {
-    type: String,
-    default: "Search",
-  },
-}); */
 </script>

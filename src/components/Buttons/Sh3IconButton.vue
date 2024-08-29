@@ -1,20 +1,18 @@
 <template>
-  <div class="card flex justify-center">
-    <Button
-      :class="twMerge('w-[40px] h-[40px]', styling)"
-      :ptOptions="{ mergeProps: true }"
-      v-bind="$attrs"
-    >
-      <template #icon>
-        <slot>
-          <Icon
-            :icon="icon.name"
-            :class="twMerge('w-5 h-auto text-white', icon.styling)"
-          />
-        </slot>
-      </template>
-    </Button>
-  </div>
+  <Button
+    :class="twMerge('w-[40px] h-[40px]', styling)"
+    :ptOptions="{ mergeProps: true }"
+    v-bind="$attrs"
+  >
+    <template #icon>
+      <slot>
+        <Icon
+          :icon="icon.name"
+          :class="twMerge('w-5 h-auto text-white', icon.styling)"
+        />
+      </slot>
+    </template>
+  </Button>
 </template>
 
 <script lang="ts" setup>

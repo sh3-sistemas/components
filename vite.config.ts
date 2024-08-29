@@ -1,11 +1,12 @@
 import { fileURLToPath, URL } from 'node:url'
 import { resolve } from "path";
+import fs from 'fs';
 
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
 import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js'
-/* import dts from 'vite-plugin-dts' */
+
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -17,16 +18,6 @@ export default defineConfig({
     }),
     vueDevTools(),
     cssInjectedByJsPlugin(),
-    /* dts({
-      copyDtsFiles: true,
-      tsconfigPath: './tsconfig.build.json',
-      exclude: ['src/ignore'],
-      compilerOptions: {
-        declarationMap: true
-      },
-      entryRoot: resolve(__dirname, 'src'),
-      outDir: resolve(__dirname, 'dist', 'types'),
-    }) */
   ],
   build: {
     sourcemap: true,
@@ -36,15 +27,34 @@ export default defineConfig({
       entry: resolve(__dirname, "src/index.ts"),
       name: "sh3-components",
       // the name of the output files when the build is run
-      formats: ['es', 'umd'], // adding 'umd' requires globals set to every external module
+      formats: ['es'], // adding 'umd' requires globals set to every external module
       // fileName: (format) => `sh3-components.${format}.js`,
       fileName: "sh3-components",
     },
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled
       // into your library
-      external: ["vue", "primevue"],
+      external: ["vue", "primevue", "prime-icons", "radix-vue", "flowbite"],
       output: {
+        /* manualChunks: (id) => {
+          if (id.includes('src/theme/')) return 'chunks/theme';
+
+          // Caminho para o diretório src/components
+          const componentsDir = resolve(__dirname, 'src/components');
+
+          // Lê as pastas dentro de src/components
+          const directories = fs.readdirSync(componentsDir, { withFileTypes: true })
+            .filter(dirent => dirent.isDirectory())
+            .map(dirent => dirent.name);
+
+          // Itera sobre as pastas para verificar se o id corresponde a alguma delas
+          for (const dir of directories) {
+            if (id.includes(`/src/components/${dir}/`)) {
+              return 'chunks/' + dir + '/' + dir; // Retorna o nome do chunk com base na pasta
+            }
+          }
+        },
+        inlineDynamicImports: false, */
         // disable warning on src/index.ts using both default and named export
         exports: 'named',
         // Provide global variables to use in the UMD build

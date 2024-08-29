@@ -19,8 +19,6 @@ function install(app: App) {
     },
   });
 
-  console.log({Was})
-
   app.mixin({
     created() {
       const primevue = usePrimeVue();
@@ -31,9 +29,6 @@ function install(app: App) {
   for (const key in components) {
     // @ts-ignore
     app.component(key, components[key]);
-    // @ts-ignore
-    // console.log({ key, comp: components[key] })
-
   }
 }
 
