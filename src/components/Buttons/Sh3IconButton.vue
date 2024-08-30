@@ -18,28 +18,11 @@
 <script lang="ts" setup>
 import { twMerge } from "tailwind-merge";
 import { Icon } from "@iconify/vue";
-
-import Button from "primevue/button";
-import type { PropType } from "vue";
-import type { IconProps } from "@/types";
+import type { Sh3IconButtonProps } from "./types";
 
 defineOptions({
   inheritAttrs: false,
 });
 
-defineProps({
-  styling: {
-    type: String,
-    default: "",
-  },
-  icon: {
-    type: Object as PropType<IconProps>,
-    default: () => {
-      return {
-        name: "mi:add",
-        styling: "",
-      };
-    },
-  },
-});
+defineProps<Sh3IconButtonProps>();
 </script>
