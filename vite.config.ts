@@ -36,7 +36,7 @@ export default defineConfig({
       // into your library
       external: ["vue", "primevue", "prime-icons", "radix-vue", "flowbite"],
       output: {
-        /* manualChunks: (id) => {
+        manualChunks: (id) => {
           if (id.includes('src/theme/')) return 'chunks/theme';
 
           // Caminho para o diretório src/components
@@ -50,11 +50,15 @@ export default defineConfig({
           // Itera sobre as pastas para verificar se o id corresponde a alguma delas
           for (const dir of directories) {
             if (id.includes(`/src/components/${dir}/`)) {
-              return 'chunks/' + dir + '/' + dir; // Retorna o nome do chunk com base na pasta
+              return 'chunks/components'; // Retorna o nome do chunk com base na pasta
             }
           }
+
+          if(id.includes('node_modules')) {
+            return 'vendor';
+          }
         },
-        inlineDynamicImports: false, */
+        inlineDynamicImports: false,
         // disable warning on src/index.ts using both default and named export
         exports: 'named',
         // Provide global variables to use in the UMD build
