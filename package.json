@@ -36,6 +36,9 @@
       "**/node_modules/**"
     ]
   },
+  "_moduleAliases": {
+    "@": "./dist"
+  },
   "dependencies": {
     "@iconify/vue": "^4.1.2",
     "flowbite": "^2.2.1",

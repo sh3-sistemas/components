@@ -10,7 +10,7 @@
 import type { ClassComponent, GlobalComponentConstructor } from "primevue/ts-helpers";
 import { notice, alert } from "../constants";
 
-type cardVariation = {
+export type cardVariation = {
     cardStyle: string;
     circleStyle: string;
     iconVariation: string;

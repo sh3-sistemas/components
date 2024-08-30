@@ -1,6 +1,2 @@
-export type IconProps = {
-    name: string,
-    styling: string,
-};
-
+export * from './common';
 export * from '../components/Buttons/types';

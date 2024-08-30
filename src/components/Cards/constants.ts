@@ -1,21 +1,4 @@
-export type style = {
-  container: string;
-  card: string;
-  circle: string;
-};
-
-export type NoticeCard = {
-  variation: string;
-  title: string;
-  text: string;
-};
-
-type cardVariation = {
-  cardStyle: string;
-  circleStyle: string;
-  iconVariation: string;
-  iconColor: string;
-};
+import type { cardVariation } from "./types";
 
 export const notice = <cardVariation>{
   cardStyle: "bg-mercury-100/80 hover:bg-mercury-100",
