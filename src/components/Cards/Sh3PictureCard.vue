@@ -1,11 +1,11 @@
 <template>
   <button
     :title="pictureCard.label"
-    @click="pictureCard.onClick(pictureCard.params)"
+    @click="pictureCard.onClick(pictureCard.params ? pictureCard.params : {})"
     :class="
       twMerge(
         'picture-card--container shrink-0 w-40 h-[105px] pt-2 gap-2 flex flex-col items-center justify-between overflow-hidden rounded-xl border border-selenium-400 hover:opacity-80',
-        pictureCardStyle.card,
+        pictureCardStyle.card
       )
     "
   >
@@ -19,7 +19,7 @@
       :class="
         twMerge(
           'picture-card--label-container px-4 py-2 w-full bg-selenium-400 rounded-b-xl text-white text-xs whitespace-nowrap truncate',
-          pictureCardStyle.label,
+          pictureCardStyle.label
         )
       "
     >
@@ -29,31 +29,24 @@
 </template>
 
 <script setup lang="ts">
-import type { PictureCard, PictureCardStyle } from "./constants";
-import type { PropType } from "vue";
 import { twMerge } from "tailwind-merge";
+import type { Sh3PictureCardProps } from "./types";
 
-defineProps({
-  pictureCard: {
-    type: Object as PropType<PictureCard>,
-    default: () => {
-      return {
-        image: "",
-        label: "",
-        params: () => {},
-        onClick: () => {},
-      };
-    },
+withDefaults(defineProps<Sh3PictureCardProps>(), {
+  pictureCard: () => {
+    return {
+      image: "",
+      label: "",
+      params: () => {},
+      onClick: () => {},
+    };
   },
-  pictureCardStyle: {
-    type: Object as PropType<PictureCardStyle>,
-    default: () => {
-      return {
-        card: "",
-        label: "",
-        image: "",
-      };
-    },
+  pictureCardStyle: () => {
+    return {
+      card: "",
+      label: "",
+      image: "",
+    };
   },
 });
 </script>

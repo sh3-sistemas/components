@@ -24,17 +24,10 @@
 <script setup lang="ts">
 import Sh3NoticeCard from "./Sh3NoticeCard.vue";
 import { twMerge } from "tailwind-merge";
-import type { NoticeCard } from "./constants";
+import type { Sh3NoticeCardWrapperProps } from "./types";
 
-defineProps({
-  noticeCards: {
-    type: Array<NoticeCard>,
-    default: () => [],
-  },
-  style: {
-    type: String,
-    default: "",
-  },
+withDefaults(defineProps<Sh3NoticeCardWrapperProps>(), {
+  noticeCards: () => [],
 });
 </script>
 

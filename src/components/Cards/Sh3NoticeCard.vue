@@ -36,20 +36,16 @@
 <script setup lang="ts">
 import { useVariation } from "./composables";
 import { twMerge } from "tailwind-merge";
-import type { PropType } from "vue";
 import { Icon } from "@iconify/vue";
-import type { NoticeCard } from "./constants";
+import type { Sh3NoticeCardProps } from "./types";
 
-const props = defineProps({
-  noticeCard: {
-    type: Object as PropType<NoticeCard>,
-    default: () => {
-      return {
-        variation: "alert",
-        title: "",
-        text: "",
-      };
-    },
+const props = withDefaults(defineProps<Sh3NoticeCardProps>(), {
+  noticeCard: () => {
+    return {
+      variation: "alert",
+      title: "",
+      text: "",
+    };
   },
 });
 

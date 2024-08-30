@@ -7,15 +7,7 @@
 
 <script setup lang="ts">
 import { SectionTitle } from "../Typography";
+import type { Sh3LobbySectionCardProps } from "./types";
 
-defineProps({
-  title: {
-    type: String,
-    default: "",
-  },
-  titleStyle: {
-    type: String,
-    default: "",
-  },
-});
+defineProps<Sh3LobbySectionCardProps>();
 </script>
