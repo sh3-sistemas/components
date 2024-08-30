@@ -8,6 +8,7 @@
  * @module modals
  * 
  */
+import type { DialogEmits, DialogProps, DialogSlots } from "primevue/dialog";
 import type { ClassComponent, GlobalComponentConstructor } from "primevue/ts-helpers";
 /**
  * **SH3 - Sh3ResponsiveModal**
@@ -18,7 +19,7 @@ import type { ClassComponent, GlobalComponentConstructor } from "primevue/ts-hel
  * @group Component
  *
  */
-declare class Sh3ResponsiveModal extends ClassComponent<any, any, any> { }
+declare class Sh3ResponsiveModal extends ClassComponent<DialogProps, DialogSlots, DialogEmits> { }
 
 declare module 'vue' {
     export interface GlobalComponents {
