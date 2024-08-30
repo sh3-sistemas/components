@@ -49,5 +49,3 @@ declare module 'vue' {
         Sh3PageNotFound: GlobalComponentConstructor<Sh3PageNotFound>;
     }
 }
-
-export default { Sh3Vertical, Sh3LayoutMock, Sh3PageNotFound };

@@ -25,5 +25,3 @@ declare module 'vue' {
         Sh3RightDrawer: GlobalComponentConstructor<Sh3RightDrawer>;
     }
 }
-
-export default { Sh3RightDrawer };

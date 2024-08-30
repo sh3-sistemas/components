@@ -37,5 +37,3 @@ declare module 'vue' {
         Sh3MiniLink: GlobalComponentConstructor<Sh3MiniLink>;
     }
 }
-
-export default { Sh3Breadcrumb, Sh3MiniLink };

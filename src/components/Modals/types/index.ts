@@ -25,5 +25,3 @@ declare module 'vue' {
         Sh3ResponsiveModal: GlobalComponentConstructor<Sh3ResponsiveModal>;
     }
 }
-
-export default Sh3ResponsiveModal;

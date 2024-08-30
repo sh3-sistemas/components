@@ -16,6 +16,7 @@
 </template>
 
 <script lang="ts" setup>
+import Button from "primevue/button";
 import { twMerge } from "tailwind-merge";
 import { Icon } from "@iconify/vue";
 import type { Sh3IconButtonProps } from "./types";

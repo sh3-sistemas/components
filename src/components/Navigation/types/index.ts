@@ -25,5 +25,3 @@ declare module 'vue' {
         Sh3UserNavbar: GlobalComponentConstructor<Sh3UserNavbar>;
     }
 }
-
-export default Sh3UserNavbar;

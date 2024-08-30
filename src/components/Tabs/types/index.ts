@@ -25,5 +25,3 @@ declare module 'vue' {
         Sh3RouterLinkTabs: GlobalComponentConstructor<Sh3RouterLinkTabs>;
     }
 }
-
-export default Sh3RouterLinkTabs;

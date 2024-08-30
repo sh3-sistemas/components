@@ -1,3 +1,4 @@
+
 import Sh3NoticeCard from "./Sh3NoticeCard.vue";
 import Sh3NoticeCardWrapper from "./Sh3NoticeCardWrapper.vue";
 import Sh3NotificationCard from "./Sh3NotificationCard.vue";
@@ -13,3 +14,5 @@ export {
   Sh3SimpleCard,
   Sh3LobbySectionCard
 };
+
+export * from './types';

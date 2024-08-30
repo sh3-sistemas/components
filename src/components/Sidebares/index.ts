@@ -3,3 +3,4 @@ import ToggleBigSidebar from "./ToggleBigSidebar.vue";
 import ToggleSmallSidebar from "./ToggleSmallSidebar.vue";
 
 export { Sh3ToggleSidebar, ToggleBigSidebar, ToggleSmallSidebar };
+export * from './types';

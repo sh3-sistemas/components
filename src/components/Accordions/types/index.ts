@@ -19,6 +19,19 @@ import type { ClassComponent, GlobalComponentConstructor } from "primevue/ts-hel
  *
  */
 declare class Sh3Accordion extends ClassComponent<any, any, any> { }
+
+export type AccordionItem = {
+    title: string;
+    links: Array<{
+        tag: string;
+        path: string;
+    }>;
+};
+
+export interface Sh3PathAccordionProps {
+    items: Array<AccordionItem>
+}
+
 /**
  * **SH3 - Sh3PathAccordion**
  *
@@ -28,14 +41,11 @@ declare class Sh3Accordion extends ClassComponent<any, any, any> { }
  * @group Component
  *
  */
-declare class Sh3PathAccordion extends ClassComponent<any, any, any> { }
+declare class Sh3PathAccordion extends ClassComponent<Sh3PathAccordionProps, any, any> { }
 
 declare module 'vue' {
     export interface GlobalComponents {
-        Sh3Accordion: GlobalComponentConstructor<Sh3Accordion>;
-
-        Sh3PathAccordion: GlobalComponentConstructor<Sh3PathAccordion>;
+        Sh3Accordion: GlobalComponentConstructor<Sh3Accordion>
+        Sh3PathAccordion: GlobalComponentConstructor<Sh3PathAccordion>
     }
 }
-
-export default { Sh3PathAccordion, Sh3Accordion };

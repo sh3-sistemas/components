@@ -65,5 +65,3 @@ declare module 'vue' {
         Sh3SectionTitle: GlobalComponentConstructor<Sh3SectionTitle>;
     }
 }
-
-export default { Sh3FirstTitle, Sh3SecondTitle, Sh3HighlightTitle, Sh3SectionTitle };

@@ -25,5 +25,3 @@ declare module 'vue' {
         Sh3AutoCompleteSearch: GlobalComponentConstructor<Sh3AutoCompleteSearch>;
     }
 }
-
-export default { Sh3AutoCompleteSearch };

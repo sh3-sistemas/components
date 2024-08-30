@@ -46,5 +46,3 @@ declare module 'vue' {
         Sh3Button: GlobalComponentConstructor<Sh3Button>;
     }
 }
-
-export default { Sh3IconButton, Sh3Button };

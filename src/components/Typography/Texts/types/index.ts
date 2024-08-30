@@ -23,5 +23,3 @@ declare module 'vue' {
         Sh3TextMiddleLine: GlobalComponentConstructor<Sh3TextMiddleLine>;
     }
 }
-
-export default { Sh3TextMiddleLine };

@@ -47,5 +47,3 @@ declare module 'vue' {
         ToggleSmallSidebar: GlobalComponentConstructor<ToggleSmallSidebar>;
     }
 }
-
-export default { Sh3ToggleSidebar, ToggleBigSidebar, ToggleSmallSidebar };

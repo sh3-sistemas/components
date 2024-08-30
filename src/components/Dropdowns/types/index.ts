@@ -49,5 +49,3 @@ declare module 'vue' {
         Sh3UserDropdown: GlobalComponentConstructor<Sh3UserDropdown>;
     }
 }
-
-export default { Sh3UserDropdown, Sh3DropdownMenu, Sh3SelectDropdown };

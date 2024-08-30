@@ -18,19 +18,9 @@
 <script setup lang="ts">
 import Sh3Accordion from "./Sh3Accordion.vue";
 import Sh3CardTag from "../Cards/fragments/Sh3CardTag.vue";
+import type { Sh3PathAccordionProps } from "./types";
 
-type AccordionItem = {
-  title: string;
-  links: Array<{
-    tag: string;
-    path: string;
-  }>;
-};
-
-defineProps({
-  items: {
-    type: Array<AccordionItem>,
-    default: () => [],
-  },
+withDefaults(defineProps<Sh3PathAccordionProps>(), {
+  items: () => [],
 });
 </script>

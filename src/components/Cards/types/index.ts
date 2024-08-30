@@ -47,7 +47,7 @@ declare class Sh3NoticeCard extends ClassComponent<Sh3NoticeCardProps, Sh3CardSl
 
 export interface Sh3NoticeCardWrapperProps {
     noticeCards: Array<NoticeCard>
-    style: string
+    style?: string
 }
 /**
  * **SH3 - Sh3NoticeCardWrapper**
@@ -153,5 +153,3 @@ declare module 'vue' {
         Sh3LobbySectionCard: GlobalComponentConstructor<Sh3LobbySectionCard>;
     }
 }
-
-export default { Sh3NoticeCard, Sh3NoticeCardWrapper, Sh3NotificationCard, Sh3PictureCard, Sh3SimpleCard, Sh3LobbySectionCard };
