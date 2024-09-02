@@ -7,8 +7,11 @@ import PrimeVue from "primevue/config";
 import Tooltip from "primevue/tooltip";
 import ptBrLocale from "./theme/locale";
 import Was from "./theme/presets/was";
+import Vueform from '@vueform/vueform';
+import vueformConfig from '../vueform.config';
 
 function install(app: App) {
+  app.use(Vueform, vueformConfig)
   app.directive("tooltip", Tooltip);
   app.use(PrimeVue, {
     unstyled: true,

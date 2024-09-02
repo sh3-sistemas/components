@@ -40,6 +40,8 @@
     "@": "./dist"
   },
   "dependencies": {
+    "@vueform/plugin-mask": "^1.0.7",
+    "@vueform/vueform": "^1.10.4",
     "@iconify/vue": "^4.1.2",
     "flowbite": "^2.2.1",
     "primeicons": "^6.0.1",

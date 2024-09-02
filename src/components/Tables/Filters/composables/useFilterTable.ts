@@ -73,6 +73,8 @@ export default function useFilterTable(
    */
   const mountFilters = async () => {
     const dynamicFilter: { [key: string]: any } = {};
+    if (!columns) return dynamicFilter
+
     const mountFilter =
       filterDisplay === "menu" ? mountMenuFilter : mountRowFilter;
 

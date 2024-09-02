@@ -3,29 +3,35 @@
   "include": [
     "vite.config.*",
     "vitest.config.*",
+    "vueform.config.*",
     "cypress.config.*",
     "nightwatch.conf.*",
     "playwright.config.*"
-  ],
+, "vueform.config.js", "vueform.config.js"  ],
   "compilerOptions": {
     "composite": true,
     "noEmit": false,
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
-
     /* Bundler Mode */
     "module": "ESNext",
     "moduleResolution": "Bundler",
     // "allowImportingTsExtensions": true,
-    "resolveJsonModule":true,
+    "resolveJsonModule": true,
     "isolatedModules": true,
     "verbatimModuleSyntax": true,
-    "types": ["node"],
+    "types": [
+      "node"
+    ],
     "declaration": true,
     "emitDeclarationOnly": true,
-
     "target": "ES2020",
     "useDefineForClassFields": true,
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "lib": [
+      "ES2020",
+      "DOM",
+      "DOM.Iterable"
+    ],
     "skipLibCheck": true,
+    "allowJs": true
   }
 }
