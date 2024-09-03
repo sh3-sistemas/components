@@ -1,14 +1,14 @@
 <template>
-  <vueform ref="form$" size="lg" :display-errors="false" :endpoint="false" @submit="submitForm">
+  <Vueform ref="form$" size="lg" :display-errors="false" :endpoint="false" @submit="submitForm">
     <slot name="form" :form="form$"></slot>
 
-    <group-element
+    <GroupElement
       name="actionButtons"
       :columns="{ container: 12, label: 3, wrapper: 12 }"
       style="padding-top: 15px"
     >
       <slot name="actions"></slot>
-      <button-element
+      <ButtonElement
         v-if="routeStep > 0"
         name="previous"
         button-type="button"
@@ -19,8 +19,8 @@
         @click="changeStep(routeStep - 1)"
       >
         Anterior
-      </button-element>
-      <button-element
+      </ButtonElement>
+      <ButtonElement
         name="cancel"
         button-type="button"
         button-class="!bg-transparent !border !border-selenium-500 !text-selenium-500"
@@ -30,8 +30,8 @@
         @click="form$.reset()"
       >
         Cancelar
-      </button-element>
-      <button-element
+      </ButtonElement>
+      <ButtonElement
         name="submit"
         button-type="button"
         :button-class="stageLabel == 'Salvar' ? '!bg-grass-500 !border-grass-500 !text-white' : ''"
@@ -42,9 +42,9 @@
         @click="routeStep != tabs.length - 1 ? changeStep(routeStep + 1) : null"
       >
         {{ stageLabel }}
-      </button-element>
-    </group-element>
-  </vueform>
+      </ButtonElement>
+    </GroupElement>
+  </Vueform>
 </template>
 
 <script setup>

@@ -119,12 +119,16 @@ const inputSize = computed(() => {
   if (props.size == "small") return "h-[45px]";
   if (props.size == "normal") return "h-[55px]";
   if (props.size == "large") return "h-[62px]";
+
+  return "h-[55px]";
 });
 
 const labelInputSize = computed(() => {
   if (props.size == "small") return "text-sm";
   if (props.size == "normal") return "text-normal";
   if (props.size == "large") return "text-lg";
+
+  return "text-normal";
 });
 
 const labelStyle = computed(() => {

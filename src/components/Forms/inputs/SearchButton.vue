@@ -1,13 +1,13 @@
 <template>
-  <button-element button-label="Pesquisar" :columns="1" secondary @click="localizarModal = true" />
-  <sh3-responsive-modal
+  <ButtonElement button-label="Pesquisar" :columns="1" secondary @click="localizarModal = true" />
+  <Sh3ResponsiveModal
     v-model="localizarModal"
     :header="searchLabel"
     :draggable="false"
     :style="{ maxWidth: '70vw', minHeight: '60dvh' }"
   >
     <div class="localizar-modal-wrapper p-5">
-      <sh3-data-table
+      <Sh3DataTable
         v-model:selection="selected"
         :items="data && data[queryKey] ? data[queryKey].data : []"
         :columns="columns"
@@ -21,17 +21,17 @@
       />
 
       <div class="localizar-modal-wraper--action-bts flex justify-end gap-x-2 mt-6">
-        <sh3-button
+        <Sh3Button
           label="Cancelar"
           class="dpto-pessoal-header--incluir"
           text
           @click="localizarModal = false"
         />
 
-        <sh3-button label="Selecionar" class="dpto-pessoal-header--incluir" @click="selectItem" />
+        <Sh3Button label="Selecionar" class="dpto-pessoal-header--incluir" @click="selectItem" />
       </div>
     </div>
-  </sh3-responsive-modal>
+  </Sh3ResponsiveModal>
 </template>
 <script setup>
 import { ref, toRefs, computed, watch } from 'vue'

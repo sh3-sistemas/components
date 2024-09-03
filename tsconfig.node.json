@@ -6,8 +6,8 @@
     "vueform.config.*",
     "cypress.config.*",
     "nightwatch.conf.*",
-    "playwright.config.*"
-, "vueform.config.js", "vueform.config.js"  ],
+    "playwright.config.*",
+  ],
   "compilerOptions": {
     "composite": true,
     "noEmit": false,

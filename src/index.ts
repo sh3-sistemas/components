@@ -5,8 +5,12 @@ import * as components from "./components";
 import { usePrimeVue } from "primevue/config";
 import PrimeVue from "primevue/config";
 import Tooltip from "primevue/tooltip";
+import ConfirmationService from 'primevue/confirmationservice';
+import ToastService from 'primevue/toastservice';
 import ptBrLocale from "./theme/locale";
+
 import Was from "./theme/presets/was";
+
 import Vueform from '@vueform/vueform';
 import vueformConfig from '../vueform.config';
 
@@ -21,6 +25,8 @@ function install(app: App) {
       ...ptBrLocale,
     },
   });
+  app.use(ConfirmationService);
+  app.use(ToastService);
 
   app.mixin({
     created() {

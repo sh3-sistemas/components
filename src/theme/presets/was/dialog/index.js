@@ -184,7 +184,7 @@ export default {
       "rounded-b-lg",
 
       // Colors
-      "bg-mercury-50 dark:bg-mercury-700",
+      "bg-mercury-0 dark:bg-mercury-700",
       "text-mercury-700 dark:text-mercury-0/80",
     ],
   },
