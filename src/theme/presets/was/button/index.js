@@ -175,12 +175,12 @@ export default {
           !props.text &&
           !props.outlined &&
           !props.plain,
-        "bg-orange-500 dark:bg-orange-400":
+        "bg-amber-600 dark:bg-amber-400":
           props.severity === "warning" &&
           !props.text &&
           !props.outlined &&
           !props.plain,
-        "ring-1 ring-orange-500 dark:ring-orange-400":
+        "ring-1 ring-amber-600 dark:ring-amber-400":
           props.severity === "warning" &&
           !props.text &&
           !props.outlined &&
@@ -188,12 +188,12 @@ export default {
       },
       // Warning Text Button
       {
-        "text-orange-500 dark:text-orange-400":
+        "text-amber-600 dark:text-amber-400":
           props.text && props.severity === "warning" && !props.plain,
       },
       // Warning Outlined Button
       {
-        "text-orange-500 ring-1 ring-orange-500 hover:bg-orange-300/20":
+        "text-amber-600 ring-1 ring-amber-600 hover:bg-amber-300/20":
           props.outlined && props.severity === "warning" && !props.plain,
       },
 
@@ -233,12 +233,12 @@ export default {
           !props.text &&
           !props.outlined &&
           !props.plain,
-        "bg-red-500 dark:bg-red-400":
+        "bg-red-700 dark:bg-red-400":
           props.severity === "danger" &&
           !props.text &&
           !props.outlined &&
           !props.plain,
-        "ring-1 ring-red-500 dark:ring-red-400":
+        "ring-1 ring-red-700 dark:ring-red-400":
           props.severity === "danger" &&
           !props.text &&
           !props.outlined &&
@@ -246,12 +246,12 @@ export default {
       },
       // Danger Text Button
       {
-        "text-red-500 dark:text-red-400":
+        "text-red-700 dark:text-red-400":
           props.text && props.severity === "danger" && !props.plain,
       },
       // Danger Outlined Button
       {
-        "text-red-500 ring-1 ring-red-500 hover:bg-red-300/20":
+        "text-red-700 ring-1 ring-red-700 hover:bg-red-300/20":
           props.outlined && props.severity === "danger" && !props.plain,
       },
 
@@ -356,19 +356,19 @@ export default {
 
       // Warning
       {
-        "hover:bg-orange-600 dark:hover:bg-orange-300 hover:ring-orange-600 dark:hover:ring-orange-300":
+        "hover:bg-amber-600 dark:hover:bg-amber-300 hover:ring-amber-600 dark:hover:ring-amber-300":
           props.severity === "warning" &&
           !props.text &&
           !props.outlined &&
           !props.plain,
       },
       {
-        "focus:ring-orange-500 dark:focus:ring-orange-400":
+        "focus:ring-amber-600 dark:focus:ring-amber-400":
           props.severity === "warning",
       },
       // Text & Outlined Button
       {
-        "hover:bg-orange-300/20":
+        "hover:bg-amber-300/20":
           (props.text || props.outlined) &&
           props.severity === "warning" &&
           !props.plain,
@@ -403,7 +403,7 @@ export default {
           !props.plain,
       },
       {
-        "focus:ring-red-500 dark:focus:ring-red-400":
+        "focus:ring-red-700 dark:focus:ring-red-400":
           props.severity === "danger",
       },
       // Text & Outlined Button

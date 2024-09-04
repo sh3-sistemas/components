@@ -1,23 +1,23 @@
 import { PrimeIcons } from 'primevue/api';
 import type { ConfirmationOptions } from "primevue/confirmationoptions";
 
-export const confirmationBaseActions = {
-    iconColor: 'text-grass-500',
-    icon: PrimeIcons.CHECK_SQUARE,
+export const returnBaseActions = {
+    iconColor: 'text-amber-600',
+    icon: PrimeIcons.CHECK_CIRCLE,
     rejectClass: 'p-button-outlined p-button-sm',
-    acceptClass: "success",
+    acceptClass: "warning",
     rejectLabel: "Cancelar",
-    acceptLabel: "Salvar",
+    acceptLabel: "Retornar",
 }
 
 export const confirmationDialogBase = (options: ConfirmationOptions) => {
     const { accept, reject } = options
 
     return {
-        group: "confirmation",
-        message: "",
-        header: "Tem certeza que deseja salvar o cadastro selecionado?",
-        ...confirmationBaseActions,
+        group: "return",
+        message: "Você pode ter alterações não salvas que serão perdidas.",
+        header: "Tem certeza que deseja retornar?",
+        ...returnBaseActions,
         accept,
         reject,
     }
