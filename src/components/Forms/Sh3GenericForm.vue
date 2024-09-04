@@ -4,6 +4,7 @@
     size="lg"
     :display-errors="false"
     :endpoint="false"
+    :disabled="!options.crud.save"
     @submit="submitForm"
   >
     <slot name="form" :form="form$"></slot>
@@ -13,26 +14,16 @@
       style="padding-top: 15px"
     >
       <ButtonElement
-        name="cancel"
+        v-if="options.crud.delete"
+        name="delete"
         button-type="button"
         button-class="!bg-transparent !border !border-red-700 !text-red-700"
         :columns="1"
         full
         style="grid-column-start: 1"
-        @click="confirm1"
+        @click="deletion"
       >
         Deletar
-      </ButtonElement>
-      <ButtonElement
-        name="cancel"
-        button-type="button"
-        button-class="!bg-transparent !border !border-red-700 !text-red-700"
-        :columns="1"
-        full
-        style="grid-column-start: 1"
-        @click="confirm2"
-      >
-        salvar
       </ButtonElement>
       <slot name="actions"></slot>
       <ButtonElement
@@ -69,30 +60,12 @@ import { useConfirm, DialogUtils } from "../Dialogs";
 
 const confirm = useConfirm();
 
-const confirm1 = () => {
-  console.log("aqui?", confirm, DialogUtils);
+const deletion = () => {
   confirm.require(
     DialogUtils.deletionDialogBase({
-      reject: () => {
-        console.log("rejected!!!");
-      },
+      reject: () => {},
       accept: () => {
-        console.log("helou accept!");
-      },
-    })
-  );
-};
-
-
-const confirm2 = () => {
-  console.log("aqui?", confirm, DialogUtils);
-  confirm.require(
-    DialogUtils.confirmationDialogBase({
-      reject: () => {
-        console.log("rejected!!!");
-      },
-      accept: () => {
-        console.log("helou accept!");
+        props.deleteRegister();
       },
     })
   );
@@ -113,7 +86,7 @@ export interface Sh3GenericFormProps {
   options?: FormOptions;
 }
 
-withDefaults(defineProps<Sh3GenericFormProps>(), {
+const props = withDefaults(defineProps<Sh3GenericFormProps>(), {
   submitForm: () => {},
   deleteRegister: () => {},
   options: () => {

@@ -54,50 +54,54 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue'
-import { useLocalizar } from '@/stores'
-import useForm from '@/composables/useForm'
+import { onMounted, ref } from "vue";
+import { useLocalizar } from "@/stores";
+import useForm from "@/composables/useForm";
 
 const props = defineProps({
   mutation: {
     type: Function,
-    default: () => {}
+    default: () => {},
+  },
+  deleteMutation: {
+    type: Function,
+    default: () => {},
   },
   clientId: {
     type: String,
-    default: ''
+    default: "",
   },
   variablesCallback: {
     type: Function,
-    default: () => {}
+    default: () => {},
   },
   toastResponse: {
     type: Object,
     default: () => {
       return {
-        success: 'Registro atualizado com sucesso',
-        enable: true
-      }
-    }
-  }
-})
+        success: "Registro atualizado com sucesso",
+        enable: true,
+      };
+    },
+  },
+});
 
-const form$ = ref(null)
-const disabled = ref(true)
-const selected = ref(null)
-const emits = defineEmits(['onDone'])
+const form$ = ref(null);
+const disabled = ref(true);
+const selected = ref(null);
+const emits = defineEmits(["onDone", "onDelete"]);
 
-const { submitForm } = useForm(props, selected, emits)
-const localizador = useLocalizar()
+const { submitForm, deleteRegister } = useForm(props, selected, emits);
+const localizador = useLocalizar();
 
 onMounted(() => {
   localizador.$subscribe((watcher) => {
-    const { newValue } = watcher.events
-    selected.value = newValue
-    disabled.value = false
+    const { newValue } = watcher.events;
+    selected.value = newValue;
+    disabled.value = false;
     form$.value.update({
-      ...newValue
-    })
-  })  
-})
+      ...newValue,
+    });
+  });
+});
 </script>
