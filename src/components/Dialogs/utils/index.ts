@@ -50,7 +50,7 @@ const dialogBase = (group: DialogGroup, options: ConfirmationOptions, base: Dial
 
     const header = options.header ?? base.header
     const message = options.message ?? base.message
-
+    
     return {
         group,
         header,

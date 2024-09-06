@@ -59,18 +59,6 @@ import { ref, withDefaults } from "vue";
 import { useConfirm, DialogUtils } from "../Dialogs";
 import type { Sh3GenericFormProps } from "./types";
 
-const confirm = useConfirm();
-const deletion = () => {
-  confirm.require(
-    DialogUtils.deletionDialogBase({
-      reject: () => {},
-      accept: () => {
-        props.deleteRegister();
-      },
-    })
-  );
-};
-
 const props = withDefaults(defineProps<Sh3GenericFormProps>(), {
   submitForm: () => {},
   deleteRegister: () => {},
@@ -84,9 +72,20 @@ const props = withDefaults(defineProps<Sh3GenericFormProps>(), {
   },
 });
 
+const confirm = useConfirm();
 const form$ = ref<Vueform>();
 const emits = defineEmits<{ setup: [form$: typeof form$] }>();
 const clearForm = () => (form$.value ? form$.value.reset() : null);
+const deletion = () => {
+  confirm.require(
+    DialogUtils.deletionDialogBase({
+      reject: () => {},
+      accept: () => {
+        props.deleteRegister();
+      },
+    })
+  );
+};
 
 onMounted(() => emits("setup", form$));
 defineExpose({ clearForm, deletion });
