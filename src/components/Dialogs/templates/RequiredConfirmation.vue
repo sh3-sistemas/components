@@ -15,21 +15,21 @@
     <div
       class="border-circle bg-primary inline-flex justify-center items-center h-6rem w-6rem"
     >
-      <i :class="['text-5xl', icon, iconColor]"></i>
+      <i :class="['text-5xl', message?.icon, message?.iconColor]"></i>
     </div>
-    <span :class="['font-bold text-2xl block mb-2 mt-4', iconColor]">
-      {{ header }}
+    <span :class="['font-bold text-2xl block mb-2 mt-4', message?.iconColor]">
+      {{ message?.header }}
     </span>
-    <p class="mb-0">{{ message }}</p>
+    <p class="mb-0">{{ message?.message }}</p>
     <div class="flex justify-end gap-2 mt-6">
       <Button
-        :label="acceptLabel"
-        :severity="acceptClass"
+        :label="message?.acceptLabel"
+        :severity="message?.acceptClass"
         @click="acceptCallback"
       />
       <Button
-        :label="rejectLabel"
-        :class="rejectClass"
+        :label="message?.rejectLabel"
+        :class="message?.rejectClass"
         outlined
         severity="secondary"
         @click="rejectCallback"
@@ -43,14 +43,14 @@ import Button from "primevue/button";
 import type { ConfirmationOptions } from "primevue/confirmationoptions";
 
 type RequiredConfirmationProps = {
-  message: any;
+  message: ConfirmationOptions & { iconColor?: string };
   onClose: () => void;
   onAccept: () => void;
   onReject: () => void;
   closeCallback: () => void;
   acceptCallback: () => void;
   rejectCallback: () => void;
-} & ConfirmationOptions & { iconColor?: string };
+};
 
 defineProps<Partial<RequiredConfirmationProps>>();
 </script>
