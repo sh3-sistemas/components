@@ -45,7 +45,7 @@
         <div class="actions-wrapper">
           <Button
             v-for="{ icon, color, action, disabled } of actions.filter(
-              (action) => action.permission(slotProps.data),
+              (action) => action.permission(slotProps.data)
             )"
             :disabled="disabled(slotProps.data)"
             @click="action(slotProps.data)"
@@ -70,9 +70,9 @@ import { twMerge } from "tailwind-merge";
 import { FilterMatchMode, FilterOperator } from "primevue/api";
 import { useFilterTable } from "../Filters/composables";
 
-import SelectFilterTag from "../Filters/SelectFilterTag.vue";
-import TextFilter from "../Filters/TextFilter.vue";
-import DateFilter from "../Filters/DateFilter.vue";
+import { SelectFilterTag } from "../Filters";
+import { TextFilter } from "../Filters";
+import { DateFilter } from "../Filters";
 
 const attrs = useAttrs();
 
