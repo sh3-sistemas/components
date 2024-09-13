@@ -79,7 +79,7 @@ export default {
       {
         "sticky z-20 font-semibold": instance.frozenRow && context.scrollable,
       },
-      "bg-mercury-50 dark:bg-mercury-800",
+      "bg-white dark:bg-mercury-800",
     ],
   }),
   tfoot: ({ context }) => ({
@@ -1264,7 +1264,7 @@ export default {
       // Color
       "dark:text-white/80",
       {
-        "bg-mercury-100 dark:bg-mercury-500/30":
+        "bg-selenium-100 dark:bg-mercury-500/30":
           context.selected && context.stripedRows,
       },
       {
