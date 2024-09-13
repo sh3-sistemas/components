@@ -19,6 +19,7 @@ import tabmenu from "./tabmenu";
 import tabview from "./tabview";
 import tag from "./tag";
 import tooltip from "./tooltip";
+import paginator from "./paginator";
 
 export default {
   autocomplete,
@@ -44,4 +45,5 @@ export default {
   tabmenu,
   tabview,
   tag,
+  paginator
 };
