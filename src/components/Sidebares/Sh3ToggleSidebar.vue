@@ -4,7 +4,7 @@
       twMerge(
         'toggle-sidebar--wrapper h-full flex flex-col gap-2 pt-6 pb-3 bg-white',
         styling.container,
-        isOpen ? 'w-[320px]' : 'w-[70px]'
+        isOpen ? 'opened' : 'w-[70px]'
       )
     "
   >
@@ -49,21 +49,25 @@
       <slot name="footer-content"></slot>
     </div>
   </div>
-  <button
+  <Sh3IconButton
     @click="toggleSidebar()"
-    class="w-7 shrink-0 h-7 mt-16 -ml-6 flex items-center justify-center rounded-full relative bg-mercury-300 hover:bg-mercury-400 active:bg-selenium-300 shadow"
-  >
-    <Icon
-      :icon="isOpen ? 'majesticons:chevron-left' : 'majesticons:chevron-right'"
-      class="w-5 h-auto text-white"
+    :styling="toggleButton.style"
+    severity="secondary"
+    :icon="{
+      name: isOpen
+        ? 'majesticons:chevron-left'
+        : 'majesticons:chevron-right',
+      styling: 'w-5 h-auto text-white',
+    }"
+    rounded
     />
-  </button>
+  
 </template>
 <script setup lang="ts">
 import { ref } from "vue";
 import { twMerge } from "tailwind-merge";
-import { Icon } from "@iconify/vue";
 import type { Sh3ToggleSidebarProps } from "./types";
+import { Sh3IconButton } from "../Buttons";
 
 const isOpen = ref(true);
 const emits = defineEmits(["onOpen", "onClose"]);
@@ -75,6 +79,17 @@ const toggleSidebar = () => {
     return;
   }
   emits("onOpen");
+};
+
+const toggleButton = {
+  style:
+    "!w-7 !h-7 shrink-0  mt-16 -ml-6 relative !bg-mercury-300 !hover:bg-mercury-400 !active:bg-selenium-300 !shadow !ring-0 !ring-transparent",
+  icon: {
+    name: isOpen.value
+      ? "majesticons:chevron-left"
+      : "majesticons:chevron-right",
+    styling: "w-5 h-auto text-white",
+  },
 };
 
 withDefaults(defineProps<Sh3ToggleSidebarProps>(), {
@@ -102,48 +117,22 @@ defineExpose({ toggleSidebar });
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
   transition: all 0.2s ease;
 }
+.opened {
+  width: 280px;
+}
+
+@media only screen and (min-width: 1025px) {
+  .opened {
+    width: 320px;
+  }
+}
+
 .title-enter-active {
   transition: opacity 0.8s ease;
 }
 
 .title-enter-from,
 .title-leave-to {
-  opacity: 0;
-}
-
-.open-enter-from {
-  width: 70px;
-  /*   transform: translateX(-100%); */
-}
-/* .open-enter-active,
-.close-leave-active {
-  transition: all 0.2s ease;
-  transform: 2s, left 2s;
-  } */
-
-/* .open-enter-from,
-  .close-leave-to {
-    left: -320px;
-    } */
-
-.open-enter-active .inner {
-  /*   transition: all 0.15s ease-in-out; */
-  overflow: hidden;
-  background-color: violet;
-}
-
-/* .open-enter-active .inner,
-.close-leave-active .inner {
-  transition: all 0.15s ease-in-out;
-} */
-
-/* .open-enter-from .inner,
-.close-leave-to .inner {
-  transform: translateX(30px);
-  opacity: 0;
-} */
-
-.open-enter-from .inner {
   opacity: 0;
 }
 </style>
