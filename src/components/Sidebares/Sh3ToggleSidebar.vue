@@ -17,7 +17,12 @@
       "
     >
       <div
-        class="toggle-sidebar-header--title-wrapper w-full inline-flex items-center justify-center gap-4"
+        :class="
+          twMerge(
+            'toggle-sidebar-header--title-wrapper w-full inline-flex items-center justify-center gap-4',
+            styling.header
+          )
+        "
       >
         <div
           class="toggle-sidebar-header--icon !w-12 !h-12 rounded-full bg-inherit border border-mercury-400 flex items-center justify-center shrink-0"
@@ -39,13 +44,14 @@
       :class="
         twMerge(
           'toggle-sidebar--body overflow-y-auto grow',
+          styling.body,
           isOpen ? 'overflow-y-auto' : 'overflow-hidden'
         )
       "
     >
       <slot name="body-content"></slot>
     </div>
-    <div class="toggle-sidebar--footer h-[7%]">
+    <div :class="twMerge('toggle-sidebar--footer h-[7%]', styling.footer)">
       <slot name="footer-content"></slot>
     </div>
   </div>
@@ -54,14 +60,11 @@
     :styling="toggleButton.style"
     severity="secondary"
     :icon="{
-      name: isOpen
-        ? 'majesticons:chevron-left'
-        : 'majesticons:chevron-right',
+      name: isOpen ? 'majesticons:chevron-left' : 'majesticons:chevron-right',
       styling: 'w-5 h-auto text-white',
     }"
     rounded
-    />
-  
+  />
 </template>
 <script setup lang="ts">
 import { ref } from "vue";
