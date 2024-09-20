@@ -57,7 +57,7 @@
   </div>
   <Sh3IconButton
     @click="toggleSidebar()"
-    :styling="toggleButton.style"
+    class="!w-7 !h-7 shrink-0 mt-16 -ml-6 relative !bg-mercury-300 !hover:bg-mercury-400 !active:bg-selenium-300 !shadow !ring-0 !ring-transparent"
     severity="secondary"
     :icon="{
       name: isOpen ? 'majesticons:chevron-left' : 'majesticons:chevron-right',
@@ -82,17 +82,6 @@ const toggleSidebar = () => {
     return;
   }
   emits("onOpen");
-};
-
-const toggleButton = {
-  style:
-    "!w-7 !h-7 shrink-0  mt-16 -ml-6 relative !bg-mercury-300 !hover:bg-mercury-400 !active:bg-selenium-300 !shadow !ring-0 !ring-transparent",
-  icon: {
-    name: isOpen.value
-      ? "majesticons:chevron-left"
-      : "majesticons:chevron-right",
-    styling: "w-5 h-auto text-white",
-  },
 };
 
 withDefaults(defineProps<Sh3ToggleSidebarProps>(), {

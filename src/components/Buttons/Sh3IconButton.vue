@@ -1,7 +1,7 @@
 <template>
   <Button
     :ptOptions="{ mergeProps: true }"
-    :class="twMerge('w-[40px] h-[40px]', styling)"
+    class="w-[40px] h-[40px]"
     v-bind="$attrs"
   >
     <template #icon>

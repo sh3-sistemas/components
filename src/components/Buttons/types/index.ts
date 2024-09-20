@@ -15,7 +15,6 @@ import type { IconProps } from "@/types";
  * Defines valid properties in Button component.
  */
 export type Sh3IconButtonProps = {
-    styling: string;
     icon: IconProps;
 }
 
