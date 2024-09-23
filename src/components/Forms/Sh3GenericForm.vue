@@ -1,11 +1,12 @@
 <template>
   <Vueform
     ref="form$"
-    size="lg"
+    size="md"
     :display-errors="false"
     :endpoint="false"
     :disabled="!options.crud.save"
     @submit="submitForm"
+    v-bind="$attrs"
   >
     <slot name="form" :form="form$"></slot>
     <GroupElement
@@ -23,7 +24,7 @@
         style="grid-column-start: 1"
         @click="deletion"
       >
-        Deletar
+        Excluir
       </ButtonElement>
       <slot name="actions"></slot>
       <ButtonElement
@@ -59,6 +60,10 @@ import { ref, withDefaults } from "vue";
 import { useConfirm, DialogUtils } from "../Dialogs";
 import type { Sh3GenericFormProps } from "./types";
 
+defineOptions({
+  inheritAttrs: false,
+});
+
 const props = withDefaults(defineProps<Sh3GenericFormProps>(), {
   submitForm: () => {},
   deleteRegister: () => {},
@@ -75,6 +80,8 @@ const props = withDefaults(defineProps<Sh3GenericFormProps>(), {
 const confirm = useConfirm();
 const form$ = ref<Vueform>();
 const emits = defineEmits<{ setup: [form$: typeof form$] }>();
+const syncForm = (data: any) =>
+  form$.value ? form$.value.update({ ...data }) : null;
 const clearForm = () => (form$.value ? form$.value.reset() : null);
 const deletion = () => {
   confirm.require(
@@ -88,5 +95,5 @@ const deletion = () => {
 };
 
 onMounted(() => emits("setup", form$));
-defineExpose({ clearForm, deletion });
+defineExpose({ clearForm, deletion, syncForm });
 </script>

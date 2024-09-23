@@ -20,6 +20,7 @@ import tabview from "./tabview";
 import tag from "./tag";
 import tooltip from "./tooltip";
 import paginator from "./paginator";
+import message from "./message";
 
 export default {
   autocomplete,
@@ -45,5 +46,6 @@ export default {
   tabmenu,
   tabview,
   tag,
-  paginator
+  paginator,
+  message
 };
