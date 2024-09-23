@@ -18,7 +18,7 @@ export default {
       // Position
       "absolute",
       "top-0 left-0",
-      "z-20",
+      "z-[90]",
 
       // Flex & Alignment
       "flex items-center justify-center",
@@ -27,14 +27,15 @@ export default {
       "w-full h-full",
 
       // Color
-      "bg-mercury-100/40 dark:bg-mercury-800/40",
+      //"bg-mercury-100/40 dark:bg-mercury-800/40",
+      "bg-mercury-500/70 dark:bg-mercury-700/70 backdrop-blur-sm",
 
       // Transition
       "transition duration-200",
     ],
   },
   loadingicon: {
-    class: "w-8 h-8 animate-spin",
+    class: "w-8 h-8 animate-spin text-selenium-600",
   },
   wrapper: ({ props }) => ({
     class: [
