@@ -147,6 +147,7 @@ const startNewRow = () => {
     ...editingRows.value,
     items.value[items.value.length - 1],
   ];
+  selected.value = [];
 };
 defineExpose({ startNewRow });
 </script>
