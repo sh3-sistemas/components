@@ -4,7 +4,7 @@
       twMerge(
         'toggle-sidebar--wrapper h-full flex flex-col gap-2 pt-6 pb-3 bg-white',
         styling.container,
-        isOpen ? 'opened' : 'w-[70px]'
+        isOpen ? 'opened' : 'closed'
       )
     "
   >
@@ -19,19 +19,20 @@
       <div
         :class="
           twMerge(
-            'toggle-sidebar-header--title-wrapper w-full inline-flex items-center justify-center gap-4',
+            'toggle-sidebar-header--title-wrapper w-full inline-flex items-start gap-4',
+            isOpen ? 'justify-start' : 'pl-2',
             styling.header
           )
         "
       >
         <div
-          class="toggle-sidebar-header--icon !w-12 !h-12 rounded-full bg-inherit border border-mercury-400 flex items-center justify-center shrink-0"
+          class="toggle-sidebar-header--icon !w-12 !h-12 rounded-full bg-inherit border border-mercury-400 flex items-center justify-center shrink-0 self-center"
         >
           <img :src="icon.src" class="w-10 h-auto" :title="icon.title" />
         </div>
         <Transition name="title">
           <span
-            v-if="isOpen"
+            v-show="isOpen"
             class="grow leading-tight line-clamp-3"
             :title="title"
             >{{ title }}</span
@@ -107,7 +108,7 @@ defineExpose({ toggleSidebar });
 <style scoped>
 .toggle-sidebar--wrapper {
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-  transition: all 0.2s ease;
+  transition: all 0.5s ease;
 }
 .opened {
   width: 280px;
@@ -119,12 +120,21 @@ defineExpose({ toggleSidebar });
   }
 }
 
-.title-enter-active {
-  transition: opacity 0.8s ease;
+.closed {
+  width: 70px;
 }
 
-.title-enter-from,
-.title-leave-to {
+.title-enter-active {
+  transition: all 0.1s ease;
+  transition-delay: 0.15s;
+}
+
+.title-leave-active {
+  transition: all 0.05s ease;
+}
+
+.title-enter-from, .title-enter-to {
   opacity: 0;
+  text-wrap: nowrap;
 }
 </style>
