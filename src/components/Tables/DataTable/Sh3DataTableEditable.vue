@@ -26,44 +26,26 @@
     </Column>
     <Column class="w-20">
       <template #body="{ data: row }">
-        <Button
+        <Sh3Button
           icon-pos="right"
-          class="!ring-0 !shadow-none !bg-transparent !text-inherit !flex mx-auto"
+          :class="buttonClass + ' !flex mx-auto'"
           icon="pi pi-pencil"
           :disabled="editingRows.length > 0"
           @click="newEdit(row)"
         />
       </template>
       <template #editor="{ data: row, index }">
-        <Button
-          v-tooltip.top="{
-            value: 'Esta ação irá salvar o registro',
-            pt: {
-              arrow: {
-                style: {
-                  borderTopColor: '#4ade80',
-                },
-              },
-              text: 'bg-green-400 text-xs rounded-md p-1.5',
-            },
-            ptOptions: { mergeProps: true },
-            showDelay: 50,
-            hideDelay: 50,
-          }"
+        <Sh3Button
+          v-tooltip.top="saveTooltip"
           icon-pos="right"
-          class="!ring-0 !bg-transparent !text-inherit !shadow-none"
+          :class="buttonClass"
           icon="pi pi-check"
           @click="updateRow(row)"
         />
-        <Button
-          v-tooltip.top="{
-            value: 'Cancelar',
-            pt: { text: 'bg-slate-300 text-xs rounded-md p-1.5' },
-            showDelay: 50,
-            hideDelay: 50,
-          }"
+        <Sh3Button
+          v-tooltip.top="cancelTooltip"
           icon-pos="right"
-          class="!ring-0 !bg-transparent !text-inherit !shadow-none"
+          :class="buttonClass"
           icon="pi pi-times"
           @click="cancelEdit(row, index)"
         />
@@ -76,9 +58,8 @@
 <script lang="ts" setup>
 import DataTable from "primevue/datatable";
 import Column from "primevue/column";
-import Button from "primevue/button";
 import InputText from "primevue/inputtext";
-import type { DataTableProps } from "primevue/datatable";
+import type { Sh3DataTableEditableProps } from "./types";
 
 const selected = defineModel<Array<object>>("selection", {
   required: false,
@@ -93,22 +74,6 @@ const items = defineModel<Array<object>>("items", {
   default: [],
 });
 
-export type ItemColum = {
-  field: any;
-  header: string;
-  filterType: string;
-  default: any;
-  sortable: boolean;
-  visible: boolean;
-  editable: boolean;
-};
-
-type Sh3DataTableEditableProps = DataTableProps & {
-  updateRow: (row: object) => void;
-  columns: Array<ItemColum>;
-  emptyString: string;
-};
-
 const props = withDefaults(defineProps<Sh3DataTableEditableProps>(), {
   emptyString: "Nenhum Registro encontrado",
   dataKey: "id",
@@ -117,6 +82,33 @@ const props = withDefaults(defineProps<Sh3DataTableEditableProps>(), {
 defineOptions({
   inheritAttrs: false,
 });
+
+const buttonClass = "!ring-0 !bg-transparent !text-inherit !shadow-none";
+
+const hideDelay = {
+  showDelay: 50,
+  hideDelay: 50,
+};
+
+const cancelTooltip = {
+  value: "Cancelar",
+  pt: { text: "bg-slate-300 text-xs rounded-md p-1.5" },
+  ...hideDelay,
+};
+
+const saveTooltip = {
+  value: "Esta ação irá salvar o registro",
+  pt: {
+    arrow: {
+      style: {
+        borderTopColor: "#4ade80",
+      },
+    },
+    text: "bg-green-400 text-xs rounded-md p-1.5",
+  },
+  ptOptions: { mergeProps: true },
+  ...hideDelay,
+};
 
 function newEdit(row: object) {
   if (selected.value.length) {
@@ -137,16 +129,14 @@ function selectRow() {
 
 const startNewRow = () => {
   let newRow = { [props.dataKey as any]: null };
-  for (let col of props.columns) {
-    if (col.default != undefined) {
-      newRow[col.field] = col.default;
+  props.columns.forEach(({ field, default: defaultValue }) => {
+    if (defaultValue !== undefined) {
+      newRow[field] = defaultValue;
     }
-  }
+  });
+
   items.value[items.value.length] = newRow;
-  editingRows.value = [
-    ...editingRows.value,
-    items.value[items.value.length - 1],
-  ];
+  editingRows.value.push(items.value[items.value.length - 1]);
   selected.value = [];
 };
 defineExpose({ startNewRow });
