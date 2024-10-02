@@ -4,10 +4,15 @@ import { defineConfig } from '@vueform/vueform'
 import PluginMask from '@vueform/plugin-mask'
 import '@vueform/vueform/types/index.d.ts'
 
+import Sh3FormButton from '@/components/Forms/components/Sh3FormButton.vue'
+
 export default defineConfig({
   theme: tailwind,
   locales: { pt_BR },
   locale: 'pt_BR',
   // classHelpers: true,
-  plugins: [PluginMask]
+  plugins: [PluginMask],
+  elements: [
+    Sh3FormButton
+  ]
 })

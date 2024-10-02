@@ -11,7 +11,7 @@
 <script lang="ts" setup>
 import InputText from "primevue/inputtext";
 
-import type { ItemColum } from "../DataTable/Sh3DataTable.vue";
+import type { ItemColum } from "@/components/Tables/DataTable/Sh3DataTable.vue";
 import type { PropType } from "vue";
 import type { Nullable } from "primevue/ts-helpers";
 

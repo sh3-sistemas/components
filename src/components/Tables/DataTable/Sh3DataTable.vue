@@ -1,8 +1,25 @@
 <template>
-  <DataTable v-model:filters="filters" :value="items">
+  <DataTable
+    v-model:filters="filters"
+    :value="items"
+    paginator
+    stripedRows
+    tableStyle="min-width: 50rem"
+    :rowsPerPageOptions="[5, 10, 20, 50]"
+    paginatorTemplate="FirstPageLink PrevPageLink CurrentPageReport NextPageLink LastPageLink"
+    currentPageReportTemplate="{first} a {last} de {totalRecords}"
+  >
+    <!-- Paginator section -->
+    <template #paginatorend>
+      <Button
+        type="button"
+        icon="pi pi-refresh"
+        text
+        @click="emits('refresh')"
+      />
+    </template>
     <template #empty>
-      <!-- TODO: Create a pretty component to the empty response of the table -->
-      {{ empty }}
+      <SearchNotFound />
     </template>
     <Column
       v-if="selectionMode"
@@ -45,7 +62,7 @@
         <div class="actions-wrapper">
           <Button
             v-for="{ icon, color, action, disabled } of actions.filter(
-              (action) => action.permission(slotProps.data),
+              (action) => action.permission(slotProps.data)
             )"
             :disabled="disabled(slotProps.data)"
             @click="action(slotProps.data)"
@@ -70,9 +87,10 @@ import { twMerge } from "tailwind-merge";
 import { FilterMatchMode, FilterOperator } from "primevue/api";
 import { useFilterTable } from "../Filters/composables";
 
-import SelectFilterTag from "../Filters/SelectFilterTag.vue";
-import TextFilter from "../Filters/TextFilter.vue";
-import DateFilter from "../Filters/DateFilter.vue";
+import { SelectFilterTag } from "../Filters";
+import { TextFilter } from "../Filters";
+import { DateFilter } from "../Filters";
+import SearchNotFound from "./fragments/SearchNotFound.vue";
 
 const attrs = useAttrs();
 
@@ -128,6 +146,7 @@ const props = defineProps({
   },
 });
 
+const emits = defineEmits(["refresh"]);
 defineOptions({
   inheritAttrs: true,
 });

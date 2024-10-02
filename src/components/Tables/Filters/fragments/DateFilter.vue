@@ -38,8 +38,8 @@ import IconField from "primevue/iconfield";
 import InputIcon from "primevue/inputicon";
 import InputText from "primevue/inputtext";
 import Divider from "primevue/divider";
-import Sh3Button from "../../Buttons/Sh3Button.vue";
-import type { ItemColum } from "../DataTable/Sh3DataTable.vue";
+import { Sh3Button } from "@/components/Buttons";
+import type { ItemColum } from "@/components/Tables/DataTable/Sh3DataTable.vue";
 
 const props = defineProps({
   col: {
@@ -107,7 +107,7 @@ const countDaysBeetweenDates = computed(() => {
   return (
     Math.floor(
       (maxDate.value.getTime() - minDate.value.getTime()) /
-        (1000 * 60 * 60 * 24),
+        (1000 * 60 * 60 * 24)
     ) + 1
   );
 });

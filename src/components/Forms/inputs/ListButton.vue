@@ -43,7 +43,7 @@
 <script setup>
 import { toRefs, ref, computed, watch } from 'vue'
 import { getQueryName } from '@/apollo/utils'
-import useFetch from '@/composables/useFetch'
+import useFetch from '@/apollo/composables/useFetch'
 
 const props = defineProps({
   searchLabel: {

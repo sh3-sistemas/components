@@ -6,13 +6,14 @@ export default {
     "./public/index.html",
     "./index.html",
     "./src/components/**/*.{vue,js,ts,jsx,tsx}",
-    './src/views/**/*.{vue,js,ts,jsx,tsx}',
-    './node_modules/sh3-components/dist/**/*.js',
+    "./src/views/**/*.{vue,js,ts,jsx,tsx}",
+    "./vueform.config.js",
+    "./node_modules/@vueform/vueform/themes/tailwind/**/*.vue",
+    "./node_modules/@vueform/vueform/themes/tailwind/**/*.js",
   ],
   theme: {
-    ...tailwindTheme
+    ...tailwindTheme,
   },
   // eslint-disable-next-line @typescript-eslint/no-require-imports
-  plugins: [require("flowbite/plugin"), require('@vueform/vueform/tailwind')],
-}
-
+  plugins: [require("flowbite/plugin"), require("@vueform/vueform/tailwind")],
+};

@@ -1,5 +1,4 @@
 import pallets from "./pallets";
-
 const { sh3Palette, primeVuePalette } = pallets;
 
 export default {

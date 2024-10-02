@@ -24,7 +24,7 @@ import type { ColumnFilterModelType } from "primevue/column";
 import Dropdown from "primevue/dropdown";
 import Tag from "primevue/tag";
 
-import type { ItemColum } from "../DataTable/Sh3DataTable.vue";
+import type { ItemColum } from "@/components/Tables/DataTable/Sh3DataTable.vue";
 import type { PropType } from "vue";
 
 defineProps({
