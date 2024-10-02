@@ -10,7 +10,7 @@
     <template #empty>{{ emptyString }} </template>
     <Column v-if="selectionMode" :selection-mode="selectionMode" class="w-10" />
     <Column
-      v-for="col of columns.filter((x) => x.visible)"
+      v-for="col of columns.filter((x) => x.visible != false)"
       :key="col.field"
       :field="col.field"
       :header="col.header"
@@ -20,7 +20,7 @@
       <template #body="{ data: row, field }">
         {{ row[field] }}
       </template>
-      <template v-if="col.editable" #editor="{ data: row, field }">
+      <template v-if="col.editable != false" #editor="{ data: row, field }">
         <InputText v-model="row[field]" :type="col.filterType.toLowerCase()" />
       </template>
     </Column>
@@ -52,7 +52,6 @@
       </template>
     </Column>
   </DataTable>
-  {{ value }}
 </template>
 
 <script lang="ts" setup>
@@ -104,28 +103,28 @@ const saveTooltip = {
         borderTopColor: "#4ade80",
       },
     },
-    text: "bg-green-400 text-xs rounded-md p-1.5",
+    text: "bg-grass-400 text-white text-xs rounded-md p-1.5",
   },
   ptOptions: { mergeProps: true },
   ...hideDelay,
 };
 
-function newEdit(row: object) {
+const newEdit = (row: object) => {
   if (selected.value.length) {
     selected.value = [];
   }
   editingRows.value = [...editingRows.value, row];
-}
-function cancelEdit(row: Record<string, any>, index: number) {
+};
+const cancelEdit = (row: Record<string, any>, index: number) => {
   editingRows.value = [];
   if (row[props.dataKey as any] && !props.value) return;
   items.value.splice(index, 1);
-}
-function selectRow() {
+};
+const selectRow = () => {
   if (editingRows.value.length) {
     selected.value = [];
   }
-}
+};
 
 const startNewRow = () => {
   let newRow = { [props.dataKey as any]: null };
