@@ -9,7 +9,6 @@ export default function usePagination(fetch: (query: object, filerQuery: object 
     const filter = filterQuery?.value ?? {}
 
     onMounted(async () => {
-        console.log({ filter, filterQuery })
         await fetch(query, { limit, page, ...filter }, options.value)
     })
 
