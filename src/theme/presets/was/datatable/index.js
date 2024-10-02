@@ -28,7 +28,7 @@ export default {
 
       // Color
       //"bg-mercury-100/40 dark:bg-mercury-800/40",
-      "bg-mercury-500/70 dark:bg-mercury-700/70 backdrop-blur-sm",
+      "backdrop-blur-sm",
 
       // Transition
       "transition duration-200",
