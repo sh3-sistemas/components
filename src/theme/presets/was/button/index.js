@@ -416,7 +416,7 @@ export default {
 
       // Disabled
       {
-        "!bg-mercury-100 !text-mercury-600 !ring-mercury-200 pointer-events-none cursor-default":
+        "!bg-mercury-100 !text-mercury-600 pointer-events-none cursor-default":
           context.disabled,
       },
 
