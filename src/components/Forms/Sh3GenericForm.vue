@@ -1,11 +1,12 @@
 <template>
   <Vueform
     ref="form$"
-    size="lg"
+    size="md"
     :display-errors="false"
     :endpoint="false"
     :disabled="!options.crud.save"
     @submit="submitForm"
+    v-bind="$attrs"
   >
     <slot name="form" :form="form$"></slot>
     <GroupElement
@@ -13,41 +14,36 @@
       :columns="{ container: 12, label: 3, wrapper: 12 }"
       style="padding-top: 15px"
     >
-      <ButtonElement
+      <Sh3FormButton
         v-if="options.crud.delete"
         name="delete"
-        button-type="button"
-        button-class="!bg-transparent !border !border-red-700 !text-red-700"
+        severity="danger"
+        container-class="col-start-1"
+        button-label="Excluir"
         :columns="1"
+        outlined
         full
-        style="grid-column-start: 1"
         @click="deletion"
-      >
-        Deletar
-      </ButtonElement>
+      />
       <slot name="actions"></slot>
-      <ButtonElement
+      <Sh3FormButton
         name="cancel"
-        button-type="button"
-        button-class="!bg-transparent !border !border-selenium-500 !text-selenium-500"
+        container-class="col-start-11"
+        button-label="Cancelar"
         :columns="1"
+        outlined
         full
-        style="grid-column-start: 11"
-        @click="form$?.reset()"
-      >
-        Cancelar
-      </ButtonElement>
-      <ButtonElement
+        @click="emits('cancel', form$)"
+      />
+      <Sh3FormButton
         name="submit"
-        button-type="button"
-        button-class="!bg-grass-500 !border-grass-500 !text-white"
+        severity="success"
+        container-class="col-start-12"
+        button-label="Salvar"
         :columns="1"
-        style="grid-column-start: 12"
-        submits
         full
-      >
-        Salvar
-      </ButtonElement>
+        submits
+      />
     </GroupElement>
   </Vueform>
 </template>
@@ -58,6 +54,10 @@ import { onMounted } from "vue";
 import { ref, withDefaults } from "vue";
 import { useConfirm, DialogUtils } from "../Dialogs";
 import type { Sh3GenericFormProps } from "./types";
+
+defineOptions({
+  inheritAttrs: false,
+});
 
 const props = withDefaults(defineProps<Sh3GenericFormProps>(), {
   submitForm: () => {},
@@ -74,19 +74,24 @@ const props = withDefaults(defineProps<Sh3GenericFormProps>(), {
 
 const confirm = useConfirm();
 const form$ = ref<Vueform>();
-const emits = defineEmits<{ setup: [form$: typeof form$] }>();
+const emits = defineEmits<{
+  setup: [form$: typeof form$];
+  cancel: [form$: typeof form$ | any];
+}>();
+
+const syncForm = (data: any) =>
+  form$.value ? form$.value.update({ ...data }) : null;
 const clearForm = () => (form$.value ? form$.value.reset() : null);
 const deletion = () => {
-  confirm.require(
-    DialogUtils.deletionDialogBase({
-      reject: () => {},
-      accept: () => {
-        props.deleteRegister();
-      },
-    })
-  );
+  const template = DialogUtils.deletionDialogBase({
+    reject: () => {},
+    accept: () => {
+      props.deleteRegister();
+    },
+  });
+  confirm.require(template);
 };
 
 onMounted(() => emits("setup", form$));
-defineExpose({ clearForm, deletion });
+defineExpose({ clearForm, deletion, syncForm });
 </script>

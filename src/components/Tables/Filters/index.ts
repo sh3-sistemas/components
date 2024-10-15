@@ -1,5 +1,4 @@
-import DateFilter from "./DateFilter.vue";
-import DateRangeFilter from "./DateRangeFilter.vue";
-import SelectFilterTag from "./SelectFilterTag.vue";
-import TextFilter from "./TextFilter.vue";
-export { DateFilter, DateRangeFilter, SelectFilterTag, TextFilter };
+export * from './fragments'
+import Sh3FilterTags from './Sh3FilterTags.vue';
+
+export { Sh3FilterTags };
