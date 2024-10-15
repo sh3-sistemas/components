@@ -1,11 +1,12 @@
 <template>
   <DataTable
+    v-bind="props"
     v-model:selection="selected"
     v-model:editingRows="editingRows"
     edit-mode="row"
     :value="items"
+    :selectionMode="undefined"
     @update:selection="selectRow"
-    v-bind="$attrs"
   >
     <template #empty>{{ emptyString }} </template>
     <Column v-if="selectionMode" :selection-mode="selectionMode" class="w-10" />
