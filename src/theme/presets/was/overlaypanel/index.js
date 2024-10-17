@@ -16,11 +16,11 @@ export default {
       "dark:border-mercury-700",
 
       // Before: Triangle
-      "before:absolute before:-top-2 before:ml-4 before:z-50",
+      /* "before:absolute before:-top-2 before:ml-4 before:z-50",
       "before:w-0 before:h-0 before:shadow-xl",
       "before:border-transparent before:border-solid",
       "before:border-x-[0.5rem] before:border-b-[0.5rem]",
-      "before:border-t-0 before:border-b-white dark:before:border-b-mercury-800",
+      "before:border-t-0 before:border-b-white dark:before:border-b-mercury-800", */
     ],
   },
   content: {
