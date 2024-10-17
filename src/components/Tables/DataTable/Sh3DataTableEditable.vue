@@ -36,10 +36,22 @@
       :pt="{ sortBadge: 'hidden' }"
     >
       <template #body="{ data: row, field }">
-        {{ row[field] }}
+        <Checkbox
+          v-if="col.filterType.toLowerCase() == 'boolean'"
+          v-model="row[field]"
+          trueValue="true"
+          disabled
+          :binary="true"
+        />
+        <div v-else>{{ row[field] }}</div>
       </template>
       <template v-if="col.editable != false" #editor="{ data: row, field }">
-        <InputText v-model="row[field]" :type="col.filterType.toLowerCase()" />
+        <InputText
+          v-if="col.filterType.toLowerCase() != 'boolean'"
+          v-model="row[field]"
+          :type="col.filterType.toLowerCase()"
+        />
+        <Checkbox v-else v-model="row[field]" trueValue="true" :binary="true" />
       </template>
     </Column>
     <Column class="w-20">
@@ -76,6 +88,7 @@
 import DataTable from "primevue/datatable";
 import Column from "primevue/column";
 import InputText from "primevue/inputtext";
+import Checkbox from "primevue/checkbox";
 import type { Sh3DataTableEditableProps } from "./types";
 import SearchNotFound from "./fragments/SearchNotFound.vue";
 
