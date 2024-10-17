@@ -7,8 +7,25 @@
     :value="items"
     :selectionMode="undefined"
     @update:selection="selectRow"
+    paginator
+    stripedRows
+    :rowsPerPageOptions="[5, 10, 20, 50]"
+    paginatorTemplate="FirstPageLink PrevPageLink CurrentPageReport NextPageLink LastPageLink"
+    currentPageReportTemplate="{first} a {last} de {totalRecords}"
+    @page="emits('page', $event)"
   >
-    <template #empty>{{ emptyString }} </template>
+    <!-- Paginator section -->
+    <template #paginatorend>
+      <Sh3Button
+        type="button"
+        icon="pi pi-refresh"
+        text
+        @click="emits('refresh')"
+      />
+    </template>
+    <template #empty>
+      <SearchNotFound />
+    </template>
     <Column v-if="selectionMode" :selection-mode="selectionMode" class="w-10" />
     <Column
       v-for="col of columns.filter((x) => x.visible != false)"
@@ -60,6 +77,7 @@ import DataTable from "primevue/datatable";
 import Column from "primevue/column";
 import InputText from "primevue/inputtext";
 import type { Sh3DataTableEditableProps } from "./types";
+import SearchNotFound from "./fragments/SearchNotFound.vue";
 
 const selected = defineModel<Array<object>>("selection", {
   required: false,
@@ -79,6 +97,7 @@ const props = withDefaults(defineProps<Sh3DataTableEditableProps>(), {
   dataKey: "id",
 });
 
+const emits = defineEmits(["refresh", "page"]);
 defineOptions({
   inheritAttrs: false,
 });
