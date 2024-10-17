@@ -1,10 +1,16 @@
 {
-  "name": "sh3-components",
+  "name": "@sh3-org/sh3-components",
   "author": {
     "name": "SH3 Informática",
     "email": "dev@sh3.com.br"
   },
-  "version": "0.0.21",
+  "repository": {
+    "url": "https://github.com/sh3-sistemas/components"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "version": "0.0.22",
   "private": false,
   "type": "module",
   "files": [
