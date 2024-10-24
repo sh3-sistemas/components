@@ -6,3 +6,4 @@ import Sh3AppBaseLayout from './Sh3AppBaseLayout.vue'
 
 export { Sh3PageNotFound, Sh3LayoutMock, Sh3Vertical, Sh3NotFound, Sh3AppBaseLayout }
 export * from './types';
+export * from './hooks';

@@ -26,7 +26,7 @@
         "
       >
         <div
-          class="toggle-sidebar-header--icon !w-12 !h-12 rounded-full bg-inherit border border-mercury-400 flex items-center justify-center shrink-0 self-center"
+          class="toggle-sidebar-header--icon !w-12 !h-12 rounded-full bg-inherit flex items-center justify-center shrink-0 self-center"
         >
           <img :src="icon.src" class="w-10 h-auto" :title="icon.title" />
         </div>
@@ -133,7 +133,8 @@ defineExpose({ toggleSidebar });
   transition: all 0.05s ease;
 }
 
-.title-enter-from, .title-enter-to {
+.title-enter-from,
+.title-enter-to {
   opacity: 0;
   text-wrap: nowrap;
 }
