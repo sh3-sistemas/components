@@ -21,7 +21,7 @@
     <AvatarFallback
       :class="
         twMerge(
-          'text-grass11 leading-1 flex h-full w-full items-center justify-center',
+          'text-grass11 leading-1 flex h-full w-full items-center justify-center rounded-full bg-mercury-100/80',
           avatarStyle.fallback,
         )
       "
