@@ -16,8 +16,8 @@
       "
     >
       <a
-        :href="params.logo.route"
-        :alt="params.logo.label"
+        :href="params.logo?.route ?? '/'"
+        :alt="params.logo?.label ?? ''"
         :class="
           twMerge(
             'user-navbar--logo-container flex items-center space-x-3 rtl:space-x-reverse',
@@ -36,7 +36,7 @@
               styling.logo.label
             )
           "
-          >{{ params.logo.label }}</span
+          >{{ params.logo?.label }}</span
         >
       </a>
       <div
