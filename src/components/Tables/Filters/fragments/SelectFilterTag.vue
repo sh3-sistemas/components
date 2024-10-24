@@ -23,27 +23,14 @@
 import type { ColumnFilterModelType } from "primevue/column";
 import Dropdown from "primevue/dropdown";
 import Tag from "primevue/tag";
+import type { FilterProps } from "./types";
 
-import type { ItemColum } from "@/components/Tables/DataTable/Sh3DataTable.vue";
-import type { PropType } from "vue";
-
-defineProps({
-  col: {
-    type: Object as PropType<ItemColum>,
-    default: () => {
-      return {
-        filter: {
-          options: [],
-        },
-      };
-    },
-  },
-  filterCallback: {
-    type: Function,
-    default: () => {
-      // Implement your filter callback logic here
-    },
-  },
+withDefaults(defineProps<FilterProps>(), {
+  col: () => ({
+    field: "",
+    header: "",
+  }),
+  filterCallback: () => {},
 });
 
 const filterModel = defineModel<ColumnFilterModelType>();
