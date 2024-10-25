@@ -1,5 +1,6 @@
 import type { App, Plugin } from "vue";
 import * as components from "./components";
+import 'vue-toastification/dist/index.css'
 
 /** PrimeVue Config. */
 import { usePrimeVue } from "primevue/config";
@@ -13,6 +14,9 @@ import Was from "./theme/presets/was";
 
 import Vueform from '@vueform/vueform';
 import vueformConfig from '../vueform.config';
+
+import Toast from 'vue-toastification'
+import { toastOptions } from "./services/toast/notification/types";
 
 export default {
   install: (app: App) => {
@@ -28,6 +32,7 @@ export default {
     });
     app.use(ConfirmationService);
     app.use(ToastService);
+    app.use(Toast, toastOptions);
 
     app.mixin({
       created() {
@@ -45,6 +50,7 @@ export default {
 
 import "./assets/main.css";
 
+export * from './services';
 export * from "./components";
 export * from "./constants";
 export * from "./utils";
