@@ -5,12 +5,16 @@
     <template #element>
       <Sh3Button
         :tabindex="isDisabled || isLoading ? -1 : undefined"
+<<<<<<< HEAD
         :class="
           'min-w-24 shrink-0' +
           classes.button +
           (full ? ' w-full ' : ' ') +
           buttonClass
         "
+=======
+        :class="['min-w-24 shrink-0', classes.button, full ? 'w-full' : '', buttonClass]"
+>>>>>>> 3a3affb (feature(baseLayout): Adição de camada extra no base layout e formatação correta das classes do botão de forms)
         :loading="isLoading"
         :label="buttonLabel"
         :severity="severity ? severity : null"

@@ -27,6 +27,7 @@
       />
       <slot name="actions"></slot>
       <Sh3FormButton
+        v-if="options.crud.cancel"
         name="cancel"
         container-class="col-start-11"
         button-label="Cancelar"
@@ -65,6 +66,7 @@ const props = withDefaults(defineProps<Sh3GenericFormProps>(), {
   options: () => {
     return {
       crud: {
+        cancel: true,
         delete: false,
         save: false,
       },

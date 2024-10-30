@@ -4,7 +4,6 @@ import type { NotificationType } from './notification/types'
 
 const toast = useToast()
 
-
 const defaultToast = (type: NotificationType, message: string) => {
   return {
     component: NotificationToast,
