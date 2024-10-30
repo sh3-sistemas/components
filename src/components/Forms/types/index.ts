@@ -1,6 +1,7 @@
 export type CrudOptions = {
     delete: boolean;
     save: boolean;
+    cancel: boolean;
 };
 
 export type FormOptions = {
