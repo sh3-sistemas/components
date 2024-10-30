@@ -1,4 +1,4 @@
-export * from './Accordions';
+export * from "./Accordions";
 export * from "./Buttons";
 export * from "./Drawers";
 export * from "./Modals";
@@ -9,9 +9,10 @@ export * from "./Dropdowns";
 export * from "./Inputs";
 export * from "./Sidebares";
 export * from "./Tabs";
+export * from "./Tags";
 export * from "./Typography";
 export * from "./Links";
 export * from "./Layouts";
 export * from "./Navigation";
 export * from "./Forms";
-export * from "./Dialogs"
+export * from "./Dialogs";

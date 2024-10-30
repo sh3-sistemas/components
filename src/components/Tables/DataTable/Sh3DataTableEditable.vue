@@ -39,10 +39,12 @@
         <Checkbox
           v-if="col.filterType.toLowerCase() == 'boolean'"
           v-model="row[field]"
-          trueValue="true"
           disabled
           :binary="true"
         />
+        <div v-else-if="col.cellFormater">
+          <component :is="col.cellFormater" v-bind="{ row, field }"></component>
+        </div>
         <div v-else>{{ row[field] }}</div>
       </template>
       <template v-if="col.editable != false" #editor="{ data: row, field }">
@@ -51,7 +53,7 @@
           v-model="row[field]"
           :type="col.filterType.toLowerCase()"
         />
-        <Checkbox v-else v-model="row[field]" trueValue="true" :binary="true" />
+        <Checkbox v-else v-model="row[field]" :binary="true" />
       </template>
     </Column>
     <Column class="w-20">
