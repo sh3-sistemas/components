@@ -22,6 +22,7 @@ type ItemColum = {
   sortable: boolean;
   visible: boolean;
   editable: boolean;
+  cellFormater: object;
 };
 
 export type Sh3DataTableEditableProps = DataTableProps & {
