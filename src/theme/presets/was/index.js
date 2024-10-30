@@ -4,6 +4,7 @@ import badgedirective from "./badgedirective";
 import button from "./button";
 import breadcrumb from "./breadcrumb";
 import calendar from "./calendar";
+import checkbox from "./checkbox";
 import datatable from "./datatable";
 import dialog from "./dialog";
 import divider from "./divider";
@@ -33,6 +34,7 @@ export default {
   button,
   breadcrumb,
   calendar,
+  checkbox,
   datatable,
   dialog,
   divider,
@@ -47,5 +49,5 @@ export default {
   tabview,
   tag,
   paginator,
-  message
+  message,
 };

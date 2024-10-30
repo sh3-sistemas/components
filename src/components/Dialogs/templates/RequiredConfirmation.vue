@@ -20,7 +20,7 @@
     <span :class="['font-bold text-2xl block mb-2 mt-4', message?.iconColor]">
       {{ message?.header }}
     </span>
-    <p class="mb-0">{{ message?.message }}</p>
+    <p class="mb-0 whitespace-pre-wrap">{{ message?.message }}</p>
     <div class="flex justify-end gap-2 mt-6">
       <Button
         :label="message?.acceptLabel"
