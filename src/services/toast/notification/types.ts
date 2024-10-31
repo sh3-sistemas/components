@@ -2,7 +2,7 @@ import { POSITION } from "vue-toastification"
 
 export const toastOptions = {
     position: POSITION.BOTTOM_RIGHT,
-    timeout: 3000,
+    timeout: 4000,
     closeButton: false,
     hideProgressBar: true,
     icon: false
