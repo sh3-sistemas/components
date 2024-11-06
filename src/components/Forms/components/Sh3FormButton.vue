@@ -1,11 +1,16 @@
 <!-- CustomElement.vue -->
 
 <template>
-  <ElementLayoutInline ref="container" :class="[containerClass]">
+  <ElementLayout ref="container" :class="[containerClass]">
     <template #element>
       <Sh3Button
         :tabindex="isDisabled || isLoading ? -1 : undefined"
-        :class="'min-w-24 shrink-0' + [classes.button, full ? 'w-full' : '', buttonClass]"
+        :class="
+          'min-w-24 shrink-0' +
+          classes.button +
+          (full ? ' w-full ' : ' ') +
+          buttonClass
+        "
         :loading="isLoading"
         :label="buttonLabel"
         :severity="severity ? severity : null"
@@ -22,7 +27,7 @@
         @click.prevent="handleClick"
       />
     </template>
-  </ElementLayoutInline>
+  </ElementLayout>
 </template>
 
 <script>
