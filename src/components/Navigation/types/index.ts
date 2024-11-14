@@ -9,6 +9,80 @@
  * 
  */
 import type { ClassComponent, GlobalComponentConstructor } from "primevue/ts-helpers";
+import type { VNode } from "vue";
+
+export type Styling = {
+    root: string;
+    container: string;
+    logo: {
+        container: string;
+        label: string;
+    };
+    content: string;
+    hamburger: string;
+    dropdown: {
+        button: string;
+        dropdown: string;
+        avatar: {
+            root: string;
+            image: string;
+            fallback: string;
+        };
+        links: {
+            root: string;
+            icon: string;
+            route: string;
+        };
+    };
+};
+
+export type ButtonNavigation =
+    {
+        icon: string,
+        label: string,
+        route: string
+    }
+
+export interface NavParams {
+    logo: {
+        route: string,
+        label: string,
+        labelStyle: string,
+    },
+    profile: {
+        photo: string,
+        name: string
+    },
+}
+
+export type UserDropdownLink = {
+    label: string,
+    link: string,
+    icon?: string,
+}
+
+export interface Sh3UserNavBarProps {
+    id: string;
+    params: NavParams;
+    userLinks: UserDropdownLink[];
+    styling: Styling;
+}
+
+export interface Sh3UserNavBarSlots {
+    /**
+     * Default content slot.
+     */
+    logo(): VNode[];
+    /**
+     * Custom header template.
+     */
+    extra(): VNode[];
+    /**
+     * Custom footer template.
+     */
+    navlinks(): VNode[];
+}
+
 /**
  * **SH3 - Sh3UserNavbar**
  *
@@ -18,7 +92,7 @@ import type { ClassComponent, GlobalComponentConstructor } from "primevue/ts-hel
  * @group Component
  *
  */
-declare class Sh3UserNavbar extends ClassComponent<any, any, any> { }
+declare class Sh3UserNavbar extends ClassComponent<Sh3UserNavBarProps, Sh3UserNavBarSlots, any> { }
 
 declare module 'vue' {
     export interface GlobalComponents {
