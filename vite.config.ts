@@ -1,33 +1,44 @@
-import { fileURLToPath, URL } from 'node:url'
+import { fileURLToPath, URL } from "node:url";
 import { resolve } from "path";
-import fs from 'fs';
+import fs from "fs";
 
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import vueDevTools from 'vite-plugin-vue-devtools'
-import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js'
+import { defineConfig } from "vite";
+import vue from "@vitejs/plugin-vue";
+import vueDevTools from "vite-plugin-vue-devtools";
+import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js";
 
+const mappings = {
+  "vue-toastification": "vue-toastification/dist",
+  primevue: "primevue/dist",
+  "@vueform": {
+    locales: "vueform/locales",
+    "plugin-mask": "vueform/plugin-mask",
+    tailwind: "vueform/tailwind",
+    default: "vueform/dist",
+  },
+  axios: "axios/dist",
+};
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     vue({
       script: {
-        defineModel: true
-      }
+        defineModel: true,
+      },
     }),
     vueDevTools(),
     cssInjectedByJsPlugin(),
   ],
   build: {
     sourcemap: true,
-    target: 'esnext',
+    target: "esnext",
     lib: {
       // src/indext.ts is where we have exported the component(s)
       entry: resolve(__dirname, "src/index.ts"),
       name: "sh3-components",
       // the name of the output files when the build is run
-      formats: ['es'], // adding 'umd' requires globals set to every external module
+      formats: ["es"], // adding 'umd' requires globals set to every external module
       // fileName: (format) => `sh3-components.${format}.js`,
       fileName: "sh3-components",
     },
@@ -37,30 +48,49 @@ export default defineConfig({
       external: ["vue", "primevue", "prime-icons", "radix-vue", "flowbite"],
       output: {
         manualChunks: (id) => {
-          if (id.includes('src/theme/')) return 'chunks/theme';
+          if (id.includes("src/theme/")) return "chunks/theme";
 
           // Caminho para o diretório src/components
-          const componentsDir = resolve(__dirname, 'src/components');
+          const componentsDir = resolve(__dirname, "src/components");
 
           // Lê as pastas dentro de src/components
-          const directories = fs.readdirSync(componentsDir, { withFileTypes: true })
-            .filter(dirent => dirent.isDirectory())
-            .map(dirent => dirent.name);
+          const directories = fs
+            .readdirSync(componentsDir, { withFileTypes: true })
+            .filter((dirent) => dirent.isDirectory())
+            .map((dirent) => dirent.name);
 
           // Itera sobre as pastas para verificar se o id corresponde a alguma delas
           for (const dir of directories) {
             if (id.includes(`/src/components/${dir}/`)) {
-              return 'chunks/components'; // Retorna o nome do chunk com base na pasta
+              return "chunks/components"; // Retorna o nome do chunk com base na pasta
             }
           }
 
-          if(id.includes('node_modules')) {
-            return 'vendor';
+          if (!id.includes("node_modules")) return null;
+
+          for (const [key, value] of Object.entries(mappings)) {
+            if (id.includes(key)) {
+              if (typeof value === "string") {
+                return value; // Retorna o valor diretamente se não for um objeto
+              }
+
+              // Verifica condições específicas para "@vueform"
+              for (const [nestedKey, nestedValue] of Object.entries(value)) {
+                if (nestedKey !== "default" && id.includes(nestedKey)) {
+                  return nestedValue;
+                }
+              }
+
+              // Retorna o valor padrão de "@vueform" se nenhuma condição específica for atendida
+              return value.default;
+            }
           }
+
+          return "vendor"; // Retorno padrão se nenhuma correspondência for encontrada
         },
         inlineDynamicImports: false,
         // disable warning on src/index.ts using both default and named export
-        exports: 'named',
+        exports: "named",
         // Provide global variables to use in the UMD build
         // for externalized deps
         globals: {
@@ -72,7 +102,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
-    }
+      "@": fileURLToPath(new URL("./src", import.meta.url)),
+    },
   },
-})
+});
