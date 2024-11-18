@@ -40,16 +40,21 @@
     "@": "./dist"
   },
   "dependencies": {
+    "@apollo/client": "^3.11.10",
     "@iconify/vue": "^4.1.2",
+    "@vue/apollo-composable": "^4.2.1",
     "@vueform/plugin-mask": "^1.0.7",
     "@vueform/vueform": "^1.10.10",
     "flowbite": "^2.2.1",
+    "graphql": "^16.9.0",
+    "graphql-tag": "^2.12.6",
     "primeicons": "^6.0.1",
     "primevue": "^3.53.0",
     "radix-vue": "^1.9.4",
     "tailwind-merge": "^2.5.2",
     "vee-validate": "^4.11.6",
     "vue": "^3.5.12",
+    "vue-router": "^4.4.5",
     "vue-toastification": "^2.0.0-rc.5"
   },
   "devDependencies": {

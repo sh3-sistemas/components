@@ -45,7 +45,7 @@ export default defineConfig({
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled
       // into your library
-      external: ["vue", "primevue", "prime-icons", "radix-vue", "flowbite"],
+      external: ["vue", "vue-router", "primevue", "prime-icons", "radix-vue", "flowbite", "graphql"],
       output: {
         manualChunks: (id) => {
           if (id.includes("src/theme/")) return "chunks/theme";

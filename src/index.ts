@@ -1,26 +1,26 @@
 import type { App, Plugin } from "vue";
 import * as components from "./components";
-import 'vue-toastification/dist/index.css'
+import "vue-toastification/dist/index.css";
 
 /** PrimeVue Config. */
 import { usePrimeVue } from "primevue/config";
 import PrimeVue from "primevue/config";
 import Tooltip from "primevue/tooltip";
-import ConfirmationService from 'primevue/confirmationservice';
-import ToastService from 'primevue/toastservice';
+import ConfirmationService from "primevue/confirmationservice";
+import ToastService from "primevue/toastservice";
 import ptBrLocale from "./theme/locale";
 
 import Was from "./theme/presets/was";
 
-import Vueform from '@vueform/vueform';
-import vueformConfig from '../vueform.config';
+import Vueform from "@vueform/vueform";
+import vueformConfig from "../vueform.config";
 
-import Toast from 'vue-toastification'
+import Toast from "vue-toastification";
 import { toastOptions } from "./services/toast/notification/types";
 
 export default {
   install: (app: App) => {
-    app.use(Vueform, vueformConfig)
+    app.use(Vueform, vueformConfig);
     app.directive("tooltip", Tooltip);
     app.use(PrimeVue, {
       unstyled: true,
@@ -46,11 +46,12 @@ export default {
       app.component(key, components[key]);
     }
   },
-} satisfies Plugin
+} satisfies Plugin;
 
 import "./assets/main.css";
 
-export * from './services';
+export * from "./apollo";
+export * from "./services";
 export * from "./components";
-export * from "./constants";
 export * from "./utils";
+export * from "./types";

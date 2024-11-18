@@ -14,7 +14,7 @@ import type {
   GlobalComponentConstructor,
 } from "primevue/ts-helpers";
 
-type ItemColum = {
+export type ItemColum = {
   field: any;
   header: string;
   filterType: string;
