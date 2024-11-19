@@ -79,9 +79,15 @@ const emits = defineEmits<{
   cancel: [form$: typeof form$ | any];
 }>();
 
-const syncForm = (data: any) =>
-  form$.value ? form$.value.update({ ...data }) : null;
-const clearForm = () => (form$.value ? form$.value.reset() : null);
+const syncForm = (data: any) => {
+  form$.value?.update({ ...data });
+  cleanForm();
+};
+const clearForm = () => {
+  form$.value?.reset();
+  cleanForm();
+};
+const cleanForm = () => form$.value?.clean();
 const deletion = () => {
   const template = DialogUtils.deletionDialogBase({
     reject: () => {},
@@ -93,5 +99,5 @@ const deletion = () => {
 };
 
 onMounted(() => emits("setup", form$));
-defineExpose({ clearForm, deletion, syncForm });
+defineExpose({ cleanForm, clearForm, deletion, syncForm });
 </script>
