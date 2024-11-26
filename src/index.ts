@@ -18,8 +18,17 @@ import vueformConfig from "../vueform.config";
 import Toast from "vue-toastification";
 import { toastOptions } from "./services/toast/notification/types";
 
+import { ApolloClient } from "@apollo/client";
+
 export default {
-  install: (app: App) => {
+  install: (
+    app: App,
+    options: {
+      apollo: {
+        clients: Record<string, any>;
+      };
+    }
+  ) => {
     app.use(Vueform, vueformConfig);
     app.directive("tooltip", Tooltip);
     app.use(PrimeVue, {
@@ -41,6 +50,12 @@ export default {
       },
     });
 
+    const { clients } = options.apollo;
+    app.provide("clients", clients);
+    app.provide(ApolloClient, {
+      ...clients,
+    });
+
     for (const key in components) {
       // @ts-ignore
       app.component(key, components[key]);
@@ -50,8 +65,8 @@ export default {
 
 import "./assets/main.css";
 
-export * from "./apollo";
 export * from "./services";
+export * from "./services/apollo";
 export * from "./components";
 export * from "./utils";
 export * from "./types";
