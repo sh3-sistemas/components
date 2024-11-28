@@ -1,5 +1,6 @@
-import type { App } from "vue";
+import type { App, Plugin } from "vue";
 import * as components from "./components";
+import 'vue-toastification/dist/index.css'
 
 /** PrimeVue Config. */
 import { usePrimeVue } from "primevue/config";
@@ -14,37 +15,42 @@ import Was from "./theme/presets/was";
 import Vueform from '@vueform/vueform';
 import vueformConfig from '../vueform.config';
 
-function install(app: App) {
-  app.use(Vueform, vueformConfig)
-  app.directive("tooltip", Tooltip);
-  app.use(PrimeVue, {
-    unstyled: true,
-    pt: Was,
-    ripple: true,
-    locale: {
-      ...ptBrLocale,
-    },
-  });
-  app.use(ConfirmationService);
-  app.use(ToastService);
+import Toast from 'vue-toastification'
+import { toastOptions } from "./services/toast/notification/types";
 
-  app.mixin({
-    created() {
-      const primevue = usePrimeVue();
-      primevue.config.pt = Was;
-    },
-  });
+export default {
+  install: (app: App) => {
+    app.use(Vueform, vueformConfig)
+    app.directive("tooltip", Tooltip);
+    app.use(PrimeVue, {
+      unstyled: true,
+      pt: Was,
+      ripple: true,
+      locale: {
+        ...ptBrLocale,
+      },
+    });
+    app.use(ConfirmationService);
+    app.use(ToastService);
+    app.use(Toast, toastOptions);
 
-  for (const key in components) {
-    // @ts-ignore
-    app.component(key, components[key]);
-  }
-}
+    app.mixin({
+      created() {
+        const primevue = usePrimeVue();
+        primevue.config.pt = Was;
+      },
+    });
+
+    for (const key in components) {
+      // @ts-ignore
+      app.component(key, components[key]);
+    }
+  },
+} satisfies Plugin
 
 import "./assets/main.css";
 
-export default { install, components };
-
+export * from './services';
 export * from "./components";
 export * from "./constants";
 export * from "./utils";

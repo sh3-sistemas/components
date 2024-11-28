@@ -43,7 +43,7 @@
       <template #body="slotProps" v-if="col.type == 'tag'">
         <Tag
           :value="slotProps.data[col.field]"
-          v-bind="col.props.tag ? col.props.tag(slotProps.data) : {}"
+          v-bind="col.props?.tag ? col.props.tag(slotProps.data) : {}"
         />
       </template>
 
@@ -104,7 +104,7 @@ export type ItemColum = {
   field: string;
   header: string;
   type?: "tag" | "download" | "actions";
-  props: ColumnProps & { tag?: (item: any) => TagProps };
+  props?: ColumnProps & { tag?: (item: any) => TagProps };
   filter?: {
     operator: keyof typeof FilterOperator;
     matchMode: keyof typeof FilterMatchMode;

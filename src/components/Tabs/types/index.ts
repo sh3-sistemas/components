@@ -18,7 +18,18 @@ import type { ClassComponent, GlobalComponentConstructor } from "primevue/ts-hel
  * @group Component
  *
  */
-declare class Sh3RouterLinkTabs extends ClassComponent<any, any, any> { }
+
+
+type RouterTab = {
+    name: string;
+    label: string;
+};
+
+export interface Sh3RouterLinkTabsProps {
+    tabGroup: Array<RouterTab>
+}
+
+declare class Sh3RouterLinkTabs extends ClassComponent<Sh3RouterLinkTabsProps, any, any> { }
 
 declare module 'vue' {
     export interface GlobalComponents {
