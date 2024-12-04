@@ -7,6 +7,7 @@ export default {
     "./index.html",
     "./src/components/**/*.{vue,js,ts,jsx,tsx}",
     "./src/views/**/*.{vue,js,ts,jsx,tsx}",
+    "./src/services/**/*.{vue,js,ts,jsx,tsx}",
     "./vueform.config.js",
     "./node_modules/@vueform/vueform/themes/tailwind/**/*.vue",
     "./node_modules/@vueform/vueform/themes/tailwind/**/*.js",

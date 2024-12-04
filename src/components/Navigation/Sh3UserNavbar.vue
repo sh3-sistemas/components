@@ -16,8 +16,8 @@
       "
     >
       <a
-        :href="params.logo.route"
-        :alt="params.logo.label"
+        :href="params.logo?.route ?? '/'"
+        :alt="params.logo?.label ?? ''"
         :class="
           twMerge(
             'user-navbar--logo-container flex items-center space-x-3 rtl:space-x-reverse',
@@ -36,7 +36,7 @@
               styling.logo.label
             )
           "
-          >{{ params.logo.label }}</span
+          >{{ params.logo?.label }}</span
         >
       </a>
       <div
@@ -83,100 +83,58 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, type PropType } from "vue";
+import { onMounted } from "vue";
 import { twMerge } from "tailwind-merge";
 import { initFlowbite } from "flowbite";
 import { Icon } from "@iconify/vue";
 import Sh3UserDropdown from "../Dropdowns/Sh3UserDropdown.vue";
-import type { NavParams, UserDropdownLink } from "./constants";
+import type { Sh3UserNavBarProps } from "./types";
 
-type Styling = {
-  root: string;
-  container: string;
-  logo: {
-    container: string;
-    label: string;
-  };
-  content: string;
-  hamburger: string;
-  dropdown: {
-    button: string;
-    dropdown: string;
-    avatar: {
-      root: string;
-      image: string;
-      fallback: string;
-    };
-    links: {
-      root: string;
-      icon: string;
-      route: string;
-    };
-  };
-};
-
-defineProps({
-  id: {
-    type: String,
-    default: "era-user-navbar",
-  },
-  params: {
-    type: Object as PropType<NavParams>,
-    default: () => {
-      return {
-        logo: {
-          route: "/",
-          label: "",
-        },
-        profile: {
-          photo:
-            "https://flowbite.com/docs/images/people/profile-picture-3.jpg",
-          name: "Fernando Pessoa",
-        },
-      };
+// Exemplo de uso com withDefaults
+withDefaults(defineProps<Sh3UserNavBarProps>(), {
+  id: "era-user-navbar",
+  params: () => ({
+    logo: {
+      route: "/",
+      label: "",
+      labelStyle: "",
     },
-  },
-  userLinks: {
-    type: Array<UserDropdownLink>,
-    default: () => {
-      return [
-        {
-          label: "",
-          link: "/",
-          icon: "",
-        },
-      ];
+    profile: {
+      photo: "https://flowbite.com/docs/images/people/profile-picture-3.jpg",
+      name: "Fernando Pessoa",
     },
-  },
-  styling: {
-    type: Object as PropType<Styling>,
-    default: () => {
-      return {
+  }),
+  userLinks: () => [
+    {
+      label: "",
+      link: "/",
+      icon: "",
+    },
+  ],
+  styling: () => ({
+    root: "",
+    container: "",
+    logo: {
+      container: "",
+      label: "",
+    },
+    content: "",
+    hamburger: "",
+    dropdown: {
+      button: "",
+      avatar: {
         root: "",
-        container: "",
-        logo: {
-          container: "",
-          label: "",
-        },
-        content: "",
-        hamburger: "",
-        dropdown: {
-          button: "",
-          avatar: {
-            root: "",
-            image: "",
-            fallback: "",
-          },
-          dropdown: "",
-          links: {
-            root: "",
-            icon: "",
-            route: "",
-          },
-        },
-      };
+        image: "",
+        fallback: "",
+      },
+      dropdown: "",
+      links: {
+        root: "",
+        icon: "",
+        route: "",
+      },
     },
-  },
+  }),
 });
 
 onMounted(() => {

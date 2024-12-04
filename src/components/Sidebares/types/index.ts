@@ -11,6 +11,7 @@ import type {
   ClassComponent,
   GlobalComponentConstructor,
 } from "primevue/ts-helpers";
+import type { VNode } from "vue";
 /**
  * **SH3 - Sh3ToggleSidebar**
  *
@@ -20,7 +21,7 @@ import type {
  * @group Component
  *
  */
-declare class Sh3ToggleSidebar extends ClassComponent<any, any, any> {}
+
 /**
  * **SH3 - ToggleBigSidebar**
  *
@@ -30,7 +31,6 @@ declare class Sh3ToggleSidebar extends ClassComponent<any, any, any> {}
  * @group Component
  *
  */
-
 export type ToggleIcon = {
   src: string;
   title: string;
@@ -46,8 +46,45 @@ export type ToggleSidebarStyle = {
 export type Sh3ToggleSidebarProps = {
   title: string;
   icon: ToggleIcon;
-  styling: ToggleSidebarStyle;
+  styling?: ToggleSidebarStyle;
 };
+
+export interface Sh3ToggleSidebarSlots {
+  /**
+   * Default header slot.
+  */
+  'header-extra-content'(): VNode[]
+  /**
+ * Custom close icon template.
+ * @param {Object} scope - close icon slot's params.
+ */
+  'body-content'(scope: {
+    /**
+     * Style class of the close icon
+     */
+    sidebar: any;
+  }): VNode[];
+  /**
+   * Default footer slot.
+  */
+  'footer-content'(): VNode[]
+}
+
+/**
+ * Defines valid emits in Dialog component.
+ */
+export interface Sh3ToggleSidebarEmits {
+  /**
+   * Callback to invoke when sidebar is closed.
+   */
+  onClose(): void;
+  /**
+   * Callback to invoke when sidebar is open.
+   */
+  onOpen(): void;
+}
+
+declare class Sh3ToggleSidebar extends ClassComponent<Sh3ToggleSidebarProps, Sh3ToggleSidebarSlots, Sh3ToggleSidebarEmits> { }
 
 declare module "vue" {
   export interface GlobalComponents {

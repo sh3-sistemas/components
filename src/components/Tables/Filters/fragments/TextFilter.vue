@@ -11,27 +11,15 @@
 <script lang="ts" setup>
 import InputText from "primevue/inputtext";
 
-import type { ItemColum } from "@/components/Tables/DataTable/Sh3DataTable.vue";
-import type { PropType } from "vue";
 import type { Nullable } from "primevue/ts-helpers";
+import type { FilterProps } from "./types";
 
-defineProps({
-  col: {
-    type: Object as PropType<ItemColum>,
-    default: () => {
-      return {
-        filter: {
-          options: [],
-        },
-      };
-    },
-  },
-  filterCallback: {
-    type: Function,
-    default: () => {
-      // Implement your filter callback logic here
-    },
-  },
+withDefaults(defineProps<FilterProps>(), {
+  col: () => ({
+    field: "",
+    header: "",
+  }),
+  filterCallback: () => {},
 });
 
 const filterModel = defineModel<Nullable<string>>();

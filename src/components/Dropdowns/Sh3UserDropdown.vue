@@ -104,7 +104,6 @@ type Styling = {
   };
 };
 
-
 defineProps({
   id: {
     type: String,

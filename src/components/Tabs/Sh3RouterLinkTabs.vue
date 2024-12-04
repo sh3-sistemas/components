@@ -22,27 +22,18 @@
 </template>
 
 <script setup lang="ts">
-import type { PropType } from "vue";
 import TabView from "primevue/tabview";
 import TabPanel from "primevue/tabpanel";
+import type { Sh3RouterLinkTabsProps } from "./types";
 
-const model = defineModel<number>();
-
-type RouterTab = {
-  name: string;
-  label: string;
-};
+withDefaults(defineProps<Sh3RouterLinkTabsProps>(), {
+  tabGroup: () => [],
+});
 
 defineOptions({
   inheritAttrs: false,
 });
 
-defineProps({
-  tabGroup: {
-    type: Array as PropType<Array<RouterTab>>,
-    default: () => <RouterTab[]>[],
-  },
-});
-
+const model = defineModel<number>();
 const emits = defineEmits(["changeRoute"]);
 </script>
